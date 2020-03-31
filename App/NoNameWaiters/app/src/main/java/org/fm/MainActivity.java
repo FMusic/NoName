@@ -3,12 +3,39 @@ package org.fm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.etPassword)
+    EditText etPassword;
+    @BindView(R.id.etUsername)
+    EditText etUsername;
+    @BindView(R.id.btnSubmit)
+    Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        logIn();
+    }
+
+    private void logIn() {
+        setContentView(R.layout.login_layout);
+        ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.btnSubmit)
+    void onAction(){
+        String pass = etPassword.getText().toString();
+        String un = etUsername.getText().toString();
+        if (un.equals("admin") && pass.equals("admin")){
+            setContentView(R.layout.activity_main);
+
+        }
     }
 }
