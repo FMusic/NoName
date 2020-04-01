@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         String un = etUsername.getText().toString();
         if (un.equals("admin") && pass.equals("admin")){
             setContentView(R.layout.activity_main);
-
         }
     }
 }

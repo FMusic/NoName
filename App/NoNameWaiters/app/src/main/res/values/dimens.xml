@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="edit_text">120dp</dimen>
+    <dimen name="text_size">25sp</dimen>
+    <dimen name="margin">30sp</dimen>
 </resources>
