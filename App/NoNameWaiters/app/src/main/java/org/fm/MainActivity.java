@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void openOrderingScreen() {
         Intent i = new Intent(this, OrderActivity.class);
-        i.putExtra(OrderActivity.Username, etUsername.getText().toString());
+        i.putExtra(OrderActivity.USERNAME, etUsername.getText().toString());
         startActivity(i);
         //todo - forward to OrderActivity
     }
