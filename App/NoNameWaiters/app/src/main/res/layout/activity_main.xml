@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/margin"
+    android:paddingTop="@dimen/margin"
+    android:paddingRight="@dimen/margin"
+    android:paddingLeft="@dimen/margin"
     tools:context=".MainActivity">
 
     <TextView
@@ -61,24 +63,36 @@
         android:orientation="vertical">
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="7"
             android:id="@+id/lvProducts" />
-        <!--
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
             android:id="@+id/lvCart"
             />
-            -->
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="ORDER"
-            android:id="@+id/btnOrder"
-            />
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="INFO"
+                android:id="@+id/btnInfo"
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="ORDER"
+                android:id="@+id/btnOrder"
+                />
+        </LinearLayout>
     </LinearLayout>
 
 

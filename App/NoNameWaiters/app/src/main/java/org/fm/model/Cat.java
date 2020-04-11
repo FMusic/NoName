@@ -1,5 +1,7 @@
 package org.fm.model;
 
+import androidx.annotation.NonNull;
+
 public class Cat {
     private String name;
 
@@ -16,5 +18,11 @@ public class Cat {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }
