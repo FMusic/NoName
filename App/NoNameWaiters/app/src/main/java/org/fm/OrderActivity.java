@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -22,6 +23,8 @@ import androidx.fragment.app.DialogFragment;
 
 import org.fm.data.RepoFactory;
 import org.fm.data.Repository;
+import org.fm.model.Cart;
+import org.fm.model.CartItem;
 import org.fm.model.Cat;
 import org.fm.model.Drink;
 
@@ -35,11 +38,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class  OrderActivity extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity {
     public static String USERNAME = "USERNAME";
     private String waiterName;
     private int tableNumBeg = 0;
     private Repository repo;
+
     private List<String> listCats;
     private Dictionary<String, Cat> dictOfCategories;
     private List<String> listCart;
@@ -47,7 +51,7 @@ public class  OrderActivity extends AppCompatActivity {
     ArrayAdapter<String> aProducts;
     CharSequence[] drinksForCat;
     List<Drink> drinksForCategory;
-    List<Drink> cart;
+    Cart cart;
 
 
     @BindView(R.id.btnOrder)
@@ -73,6 +77,7 @@ public class  OrderActivity extends AppCompatActivity {
 
     private void setData() {
         repo = RepoFactory.getRepo();
+        cart = new Cart();
         getCategories();
         getTopThree();
         setCart();
@@ -82,13 +87,13 @@ public class  OrderActivity extends AppCompatActivity {
         List<Cat> cats = repo.getCategories();
         dictOfCategories = new Hashtable<>();
         listCats = new ArrayList<>();
-        for (Cat cat: cats){
+        for (Cat cat : cats) {
             dictOfCategories.put(cat.toString(), cat);
             listCats.add(cat.toString());
         }
-        aProducts = new ArrayAdapter<String>(this, R.layout.categories_lv , listCats);
-        lvProducts.setOnClickListener(v -> {
-            TextView tv = (TextView) v;
+        aProducts = new ArrayAdapter<String>(this, R.layout.categories_lv, listCats);
+        lvProducts.setOnItemClickListener((parent, view, position, id) -> {
+            TextView tv = (TextView) view;
             String s = tv.getText().toString();
             openChooserForDrink(s);
         });
@@ -98,7 +103,7 @@ public class  OrderActivity extends AppCompatActivity {
     private void getTopThree() {
         List<Drink> topThreeDrinks = repo.getTopThreeDrinks();
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        for(Drink d : topThreeDrinks){
+        for (Drink d : topThreeDrinks) {
             Button b = new Button(this);
             b.setText(d.getName());
             b.setLayoutParams(lp);
@@ -108,7 +113,7 @@ public class  OrderActivity extends AppCompatActivity {
 
     private void setCart() {
         listCart = new ArrayList<>();
-        aCart = new ArrayAdapter<>(this, R.layout.categories_lv, listCart);
+        aCart = new ArrayAdapter<>(this, R.layout.categories_lv, cart.itemsNames);
         lvCart.setAdapter(aCart);
     }
 
@@ -121,8 +126,20 @@ public class  OrderActivity extends AppCompatActivity {
         for (int i = 0; i < drinksForCategory.size(); i++) {
             drinksForCat[i] = drinksForCategory.get(i).toString();
         }
-        DialogFragment dialog = new DrinkDialog();
-        dialog.show(getSupportFragmentManager(), getString(R.string.drinks));
+        showDialog();
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.choose_drink)
+                .setItems(drinksForCat, (dialog, which) -> {
+                    CartItem ci = new CartItem(drinksForCategory.get(which), 1);
+                    cart.add(ci);
+                    listCart.add(drinksForCategory.get(which).toString());
+                    aCart.notifyDataSetChanged();
+                })
+                .create()
+                .show();
     }
 
     private void initWidgets() {
@@ -135,34 +152,16 @@ public class  OrderActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btnPlus)
-    void onClickPlus(){
+    void onClickPlus() {
         int num = Integer.parseInt(tvTableNumber.getText().toString());
         num++;
         tvTableNumber.setText(String.valueOf(num));
     }
 
     @OnClick(R.id.btnMinus)
-    void onClickMinus(){
+    void onClickMinus() {
         int num = Integer.parseInt(tvTableNumber.getText().toString());
         num--;
         tvTableNumber.setText(String.valueOf(num));
-    }
-
-    //DrinkChooser
-    public class DrinkDialog extends DialogFragment {
-        @NonNull
-        @Override
-        public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle(R.string.choose_drink)
-                    .setItems(drinksForCat, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            cart.add(drinksForCategory.get(which));
-                            aCart.notifyDataSetChanged();
-                        }
-                    });
-            return builder.create();
-        }
     }
 }

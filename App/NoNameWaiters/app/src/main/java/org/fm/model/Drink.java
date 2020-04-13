@@ -1,5 +1,7 @@
 package org.fm.model;
 
+import androidx.annotation.NonNull;
+
 public class Drink {
     private int price;
     private String name;
@@ -36,5 +38,11 @@ public class Drink {
 
     public void setCategory(Cat category) {
         this.category = category;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }

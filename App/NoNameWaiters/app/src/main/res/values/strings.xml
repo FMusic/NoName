@@ -7,4 +7,6 @@
     <string name="new_order">New Order:</string>
     <string name="choose_drink">Choose drink:</string>
     <string name="drinks">drinks</string>
+    <string name="cats">Categories</string>
+    <string name="cart">Cart</string>
 </resources>
