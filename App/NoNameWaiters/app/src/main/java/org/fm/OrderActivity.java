@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -115,10 +117,32 @@ public class OrderActivity extends AppCompatActivity {
         listCart = new ArrayList<>();
         aCart = new ArrayAdapter<>(this, R.layout.categories_lv, cart.itemsNames);
         lvCart.setAdapter(aCart);
+        lvCart.setOnItemClickListener((parent, view, position, id) -> showDialogNumbering(cart.get(position), position));
+        lvCart.setOnItemLongClickListener((parent, view, position, id) -> deleteFromCart(position));
     }
 
+    private boolean deleteFromCart(int position) {
+        cart.remove(position);
+        aCart.notifyDataSetChanged();
+        return true;
+    }
 
+    private void showDialogNumbering(CartItem cartItem, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Pick quantity");
+        LayoutInflater li = getLayoutInflater();
+        View dialogView = li.inflate(R.layout.quantity_picker_dialog, null);
+        builder.setView(dialogView);
+        NumberPicker np = (NumberPicker) dialogView.findViewById(R.id.dialog_number_picker);
+        np.setMinValue(1);
+        builder.setPositiveButton("Done", (dialog, which) -> saveNewQuantity(cartItem, np.getValue(), position));
+        builder.create().show();
+    }
+
+    private void saveNewQuantity(CartItem cartItem, int newVal, int cartPosition) {
     //todo
+    }
+
     private void openChooserForDrink(String categoryName) {
         Cat cat = dictOfCategories.get(categoryName);
         drinksForCategory = repo.getDrinksForCategory(cat);
