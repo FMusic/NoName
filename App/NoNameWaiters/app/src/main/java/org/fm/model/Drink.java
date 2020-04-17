@@ -1,6 +1,7 @@
 package org.fm.model;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class Drink {
     private int price;
@@ -44,5 +45,14 @@ public class Drink {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        Drink d = (Drink) obj;
+        if (d.getName().equals(this.getName())){
+            return true;
+        }
+        return false;
     }
 }

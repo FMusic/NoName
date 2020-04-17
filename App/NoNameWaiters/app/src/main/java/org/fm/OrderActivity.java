@@ -134,13 +134,15 @@ public class OrderActivity extends AppCompatActivity {
         View dialogView = li.inflate(R.layout.quantity_picker_dialog, null);
         builder.setView(dialogView);
         NumberPicker np = (NumberPicker) dialogView.findViewById(R.id.dialog_number_picker);
+        np.setValue(1);
         np.setMinValue(1);
-        builder.setPositiveButton("Done", (dialog, which) -> saveNewQuantity(cartItem, np.getValue(), position));
-        builder.create().show();
+        builder.setPositiveButton("Done", (dialog, which) -> saveNewQuantity(cartItem, np.getValue(), position))
+                .create()
+                .show();
     }
 
     private void saveNewQuantity(CartItem cartItem, int newVal, int cartPosition) {
-    //todo
+        cart.changeQuantity(cartPosition, newVal);
     }
 
     private void openChooserForDrink(String categoryName) {
