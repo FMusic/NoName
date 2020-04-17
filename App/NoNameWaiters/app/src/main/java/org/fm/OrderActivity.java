@@ -109,6 +109,10 @@ public class OrderActivity extends AppCompatActivity {
             Button b = new Button(this);
             b.setText(d.getName());
             b.setLayoutParams(lp);
+            b.setOnClickListener(v -> {
+                cart.add(new CartItem(d, 1));
+                aCart.notifyDataSetChanged();
+            });
             btnsMostOrd.addView(b);
         }
     }
