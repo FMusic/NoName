@@ -1,27 +1,20 @@
 package org.fm;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import org.fm.data.RepoFactory;
 import org.fm.data.Repository;
@@ -32,7 +25,6 @@ import org.fm.model.Drink;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -156,10 +148,10 @@ public class OrderActivity extends AppCompatActivity {
         for (int i = 0; i < drinksForCategory.size(); i++) {
             drinksForCat[i] = drinksForCategory.get(i).toString();
         }
-        showDialog();
+        showDrinkDialog();
     }
 
-    private void showDialog() {
+    private void showDrinkDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.choose_drink)
                 .setItems(drinksForCat, (dialog, which) -> {
@@ -193,5 +185,23 @@ public class OrderActivity extends AppCompatActivity {
         int num = Integer.parseInt(tvTableNumber.getText().toString());
         num--;
         tvTableNumber.setText(String.valueOf(num));
+    }
+
+    @OnClick(R.id.btnInfo)
+    void openInfoDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater li = getLayoutInflater();
+        View dialogView = li.inflate(R.layout.waiter_info_dialog, null);
+        int money = repo.getSumMoney();
+        int bills = repo.getBillsToday();
+        TextView tvBillsMade = findViewById(R.id.tvBillsMade);
+        TextView tvAmountMoney = findViewById(R.id.tvAmountMoney);
+        tvBillsMade.setText(bills);
+        tvAmountMoney.setText(money);
+        builder.setView(dialogView);
+        builder.setPositiveButton("Close", (dialog, which) -> dialog.cancel())
+                .setTitle("Info about" + waiterName)
+                .create()
+                .show();
     }
 }

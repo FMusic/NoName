@@ -34,4 +34,14 @@ public class FakeRepo implements Repository {
         list.add(new Drink(10, "Sok od jagode", category));
         return list;
     }
+
+    @Override
+    public int getBillsToday() {
+        return 10;
+    }
+
+    @Override
+    public int getSumMoney() {
+        return 100;
+    }
 }

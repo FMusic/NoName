@@ -9,4 +9,6 @@
     <string name="drinks">drinks</string>
     <string name="cats">Categories</string>
     <string name="cart">Cart</string>
+    <string name="bills_made">Bills made:</string>
+    <string name="money_earned">Money earned:</string>
 </resources>

@@ -9,4 +9,8 @@ public interface Repository {
     List<Drink> getTopThreeDrinks();
     List<Cat> getCategories();
     List<Drink> getDrinksForCategory(Cat category);
+
+    int getBillsToday();
+
+    int getSumMoney();
 }
