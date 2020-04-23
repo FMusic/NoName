@@ -11,4 +11,8 @@
     <string name="cart">Cart</string>
     <string name="bills_made">Bills made:</string>
     <string name="money_earned">Money earned:</string>
+    <string name="info_about">Info about</string>
+    <string name="close">Close</string>
+    <string name="pick_quantity">Pick quantity</string>
+    <string name="done">Done</string>
 </resources>

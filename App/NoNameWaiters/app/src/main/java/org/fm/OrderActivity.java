@@ -125,14 +125,14 @@ public class OrderActivity extends AppCompatActivity {
 
     private void showDialogNumbering(CartItem cartItem, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick quantity");
+        builder.setTitle(R.string.pick_quantity);
         LayoutInflater li = getLayoutInflater();
         View dialogView = li.inflate(R.layout.quantity_picker_dialog, null);
         builder.setView(dialogView);
         NumberPicker np = (NumberPicker) dialogView.findViewById(R.id.dialog_number_picker);
         np.setValue(1);
         np.setMinValue(1);
-        builder.setPositiveButton("Done", (dialog, which) -> saveNewQuantity(cartItem, np.getValue(), position))
+        builder.setPositiveButton(R.string.done, (dialog, which) -> saveNewQuantity(cartItem, np.getValue(), position))
                 .create()
                 .show();
     }
@@ -199,9 +199,14 @@ public class OrderActivity extends AppCompatActivity {
         tvBillsMade.setText(bills);
         tvAmountMoney.setText(money);
         builder.setView(dialogView);
-        builder.setPositiveButton("Close", (dialog, which) -> dialog.cancel())
-                .setTitle("Info about" + waiterName)
+        builder.setPositiveButton(R.string.close, (dialog, which) -> dialog.cancel())
+                .setTitle(getString(R.string.info_about) + waiterName)
                 .create()
                 .show();
+    }
+
+    @OnClick(R.id.btnOrder)
+    void OrderCart(){
+        //todo
     }
 }
