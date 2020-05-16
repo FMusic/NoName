@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algebra.OICAR.Desktop", "Algebra.OICAR.Desktop\Algebra.OICAR.Desktop.csproj", "{F69DB7F8-A3ED-4029-8BBC-5597E0841A9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algebra.OICAR.Types", "Algebra.OICAR.Types\Algebra.OICAR.Types.csproj", "{5835A55C-BADE-492A-94BF-419C80BCD54C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algebra.OICAR.Business", "Algebra.OICAR.Business\Algebra.OICAR.Business.csproj", "{74C3181E-6DA4-4909-A467-21C087F7AA2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algebra.OICAR.Presentation", "Algebra.OICAR.Presentation\Algebra.OICAR.Presentation.csproj", "{1F55C8A2-0968-49D9-84C8-C165248B5217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F69DB7F8-A3ED-4029-8BBC-5597E0841A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69DB7F8-A3ED-4029-8BBC-5597E0841A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69DB7F8-A3ED-4029-8BBC-5597E0841A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69DB7F8-A3ED-4029-8BBC-5597E0841A9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5835A55C-BADE-492A-94BF-419C80BCD54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5835A55C-BADE-492A-94BF-419C80BCD54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5835A55C-BADE-492A-94BF-419C80BCD54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5835A55C-BADE-492A-94BF-419C80BCD54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74C3181E-6DA4-4909-A467-21C087F7AA2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74C3181E-6DA4-4909-A467-21C087F7AA2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74C3181E-6DA4-4909-A467-21C087F7AA2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74C3181E-6DA4-4909-A467-21C087F7AA2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F55C8A2-0968-49D9-84C8-C165248B5217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F55C8A2-0968-49D9-84C8-C165248B5217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F55C8A2-0968-49D9-84C8-C165248B5217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F55C8A2-0968-49D9-84C8-C165248B5217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0ACB4C76-8AB4-4C42-82C4-5D6AA51450E3}
+	EndGlobalSection
+EndGlobal
