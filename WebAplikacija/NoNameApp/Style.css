@@ -1,0 +1,42 @@
+﻿body {
+    background-color: lightcyan;
+}
+
+#wrapper {
+    margin: 20px 300px 20px 300px;
+    height: 750px; /* Ovo zelimo namjestiti na 100% visine stranice. */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+#menu {
+    flex: 1;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+#content {
+    flex: 20;
+}
+
+#content-inner {
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+}
+
+#content-inner-left {
+    flex: 5;
+    border-right: 1px solid black;
+    padding: 10px;
+}
+
+#content-inner-right {
+    flex: 3;
+    padding: 10px;
+}
+
+.my-table td {
+    border: 1px solid black;
+}
