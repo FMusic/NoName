@@ -1,6 +1,0 @@
-C:\Users\dario.pudic\Desktop\FAKS\Algebra.OICAR\Algebra.OICAR.Types\bin\Debug\Algebra.OICAR.Types.dll
-C:\Users\dario.pudic\Desktop\FAKS\Algebra.OICAR\Algebra.OICAR.Types\bin\Debug\Algebra.OICAR.Types.pdb
-C:\Users\dario.pudic\Desktop\FAKS\Algebra.OICAR\Algebra.OICAR.Types\obj\Debug\Algebra.OICAR.Types.csproj.CoreCompileInputs.cache
-C:\Users\dario.pudic\Desktop\FAKS\Algebra.OICAR\Algebra.OICAR.Types\obj\Debug\Algebra.OICAR.Types.dll
-C:\Users\dario.pudic\Desktop\FAKS\Algebra.OICAR\Algebra.OICAR.Types\obj\Debug\Algebra.OICAR.Types.pdb
-C:\Users\dario.pudic\Desktop\FAKS\Algebra.OICAR\Algebra.OICAR.Types\obj\Debug\Algebra.OICAR.Types.csprojAssemblyReference.cache
