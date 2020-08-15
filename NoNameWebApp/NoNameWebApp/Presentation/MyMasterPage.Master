@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#"
+    AutoEventWireup="true"
+    CodeBehind="MyMasterPage.master.cs"
+    Inherits="NoNameWebApp.Presentation.MyMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <link href="MyStyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <div>
+                <asp:Menu ID="NavigationMenu" runat="server" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="Ponuda" NavigateUrl="~/Presentation/MainPage.aspx" />
+                        <asp:MenuItem Text="Izvještaji" NavigateUrl="~/Presentation/Reports.aspx" />
+                        <asp:MenuItem Text="Nabava" NavigateUrl="~/Presentation/Supply.aspx" />
+                        <asp:MenuItem Text="Računi za odobrenje" NavigateUrl="~/Presentation/Bills.aspx" />
+                    </Items>
+                </asp:Menu>
+                <div>
+                    <asp:Button ID="ButtonLogout" runat="server" Text="Odjava" OnClick="ButtonLogout_Click" />
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
