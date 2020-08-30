@@ -53,14 +53,10 @@ namespace NoNameWebApp.Presentation
 
             if (selectedIndex == -1 || afterUpdate)
             {
-                // To znaci da DDL ranije nije bila popunjena (GET request).
                 DropDownListStatuses.SelectedValue = bill.LastStatus.Name;
             }
             else
             {
-                // To znaci se dogodio post back, a buduci da smo gore ispraznili pa nanovo
-                // popunili listu statusa, obrisao se selektirani indeks i moramo ga rucno
-                // opet postaviti. Ista stvar kao na stranici za prikaz svih racuna.
                 DropDownListStatuses.SelectedIndex = selectedIndex;
             }
         }
@@ -71,7 +67,6 @@ namespace NoNameWebApp.Presentation
 
             if (selectedStatus.Equals(bill.LastStatus.Name))
             {
-                // Ne zelimo dodati dva puta isti status.
                 return;
             }
 

@@ -18,7 +18,6 @@ namespace NoNameWebApp.Presentation
                 category = CommonBusinessStuff.mainData.Categories.Single(c => c.Id == id);
                 ViewState[KEY_CATEGORY] = category;
                 
-                // Text box treba setirati samo u GET requestu (specificno ponasanje).
                 TextBoxName.Text = category.Name;
             }
             else
