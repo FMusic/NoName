@@ -1,0 +1,9 @@
+USE NoNameCoffeeBar;
+GO
+
+CREATE PROCEDURE SP_InsertCategory
+@Name VARCHAR(20)
+AS
+BEGIN
+	INSERT INTO Category VALUES (@Name);
+END

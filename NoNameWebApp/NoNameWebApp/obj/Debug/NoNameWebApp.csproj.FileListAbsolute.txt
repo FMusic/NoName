@@ -108,11 +108,10 @@ C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\ros
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\roslyn\VBCSCompiler.exe
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\NoNameAppDataModel.dll
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\Newtonsoft.Json.dll
+C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\Newtonsoft.Json.xml
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\NoNameAppDataModel.pdb
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\bin\Newtonsoft.Json.xml
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\obj\Debug\NoNameWebApp.csprojAssemblyReference.cache
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\obj\Debug\NoNameWebApp.csproj.CoreCompileInputs.cache
 C:\Users\Xinlyn\Documents\TimskiProjekt\NoName\NoNameWebApp\NoNameWebApp\obj\Debug\NoNameWebApp.csproj.CopyComplete

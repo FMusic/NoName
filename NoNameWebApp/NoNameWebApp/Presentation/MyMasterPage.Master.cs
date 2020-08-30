@@ -1,6 +1,8 @@
 ﻿using NoNameAppDataModel;
 using NoNameWebApp.Business;
 using System;
+using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace NoNameWebApp.Presentation
 {
@@ -25,10 +27,34 @@ namespace NoNameWebApp.Presentation
                 return;
             }
 
-            if (Request.Url.AbsoluteUri.Contains("Supply") && userData.userType.Name.Equals("Waiter"))
+            bool isAdmin = userData.userType.Name.Equals("Admin");
+
+            // Ogranicenje pristupa.
+            if (!isAdmin)
             {
-                Response.Redirect("LoginPage.aspx", false);
-                return;
+                if (CommonBusinessStuff.pagesHiddenFromNonAdminUser.Any(p => Request.Url.AbsoluteUri.Contains(p)))
+                {
+                    Response.Redirect("MainPage.aspx", false);
+                    return;
+                }
+
+                // Remove some links from navigation menu.
+                string[] hiddenPages = new string[] { "Supply.aspx", "Reports.aspx" };
+
+                foreach (string page in hiddenPages)
+                {
+                    string path = string.Format("~/Presentation/{0}", page);
+
+                    for (int i = NavigationMenu.Items.Count - 1; i >= 0; --i)
+                    {
+                        MenuItem item = NavigationMenu.Items[i];
+
+                        if (hiddenPages.Any(p => item.NavigateUrl.Contains(p)))
+                        {
+                            NavigationMenu.Items.RemoveAt(i);
+                        }
+                    }
+                }
             }
         }
 

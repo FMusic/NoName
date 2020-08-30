@@ -16,10 +16,12 @@ namespace NoNameWebApp.Presentation
         {
             if (!IsPostBack)
             {
+                // Na pocetku moramo pokupiti sve račune i spremiti ih u view state.
                 await RefreshBills();
             }
             else
             {
+                // Ako je bio post back, izvadimo stvari iz view statea.
                 CommonBusinessStuff.bills = (List<Bill>)ViewState[KEY_BILLS];
             }
 
@@ -40,10 +42,12 @@ namespace NoNameWebApp.Presentation
 
             if (selectedIndex == -1)
             {
+                // To znaci da smo upravo otvorili stranicu, DDL nije ranije bila popunjena.
                 DropDownListStatuses.SelectedValue = "CREATED";
             }
             else
             {
+                // Inace, postavi selektirani indeks na onaj koji je ranije postavljen.
                 DropDownListStatuses.SelectedIndex = selectedIndex;
             }
 

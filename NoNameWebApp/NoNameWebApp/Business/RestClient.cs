@@ -1,295 +1,234 @@
-﻿using NoNameAppDataModel;
-using System;
+﻿using Newtonsoft.Json;
+using NoNameAppDataModel;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NoNameWebApp.Business
 {
-    // TODO: Kod u svakoj od metoda treba zamijeniti pozivom odgovarajuce metode REST servisa.
-    // Ne treba mijenjati potpise funkcija ni ostatak koda u aplikaciji.
     public class RestClient
     {
+        private const string MAIN_URI = "http://localhost:59518/api/";
+
         // POST /login
         public static async Task<UserData> CheckLogin(UserData userData)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/login", MAIN_URI);
 
-            UserData userDataFromDB = DummyData
-                .userDataList
-                .FirstOrDefault(ud =>
-                    ud.UserName.Equals(userData.UserName) &&
-                    ud.Password.Equals(userData.Password));
-
-            return userDataFromDB;
-        }
-
-        // GET /main-data
-        public static async Task<MainData> GetMainData()
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-
-            MainData mainData = new MainData
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, uri)
             {
-                Categories = new List<Category>(DummyData.categories),
-                Products = new List<Product>(DummyData.products)
+                Content = new StringContent(JsonConvert.SerializeObject(userData), Encoding.UTF8, "application/json")
             };
 
-            return mainData;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+
+            if (message.StatusCode == HttpStatusCode.OK)
+            {
+                string content = await message.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<UserData>(content);
+            }
+
+            return null;
+        }
+
+        // GET /maindata
+        public static async Task<MainData> GetMainData()
+        {
+            string uri = string.Format("{0}/maindata", MAIN_URI);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync(uri);
+
+            if (message.StatusCode != HttpStatusCode.OK)
+            {
+                return null;
+            }
+
+            string content = await message.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<MainData>(content);
         }
 
         // POST /bills
         public static async Task<bool> CreateBill(Bill bill)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/bills", MAIN_URI);
 
-            // Prvo treba izracunati novi ID.
-            int? maxBillId = DummyData.bills.Max(b => b.Id);
-            bill.Id = (maxBillId == null) ? 1 : (maxBillId.Value + 1);
-
-            // Zatim treba odrediti novi broj racuna.
-            string billNumberPrefix = string.Format(
-                "{0:0000}-{1:00}-{2:00}",
-                DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-
-            string lastNumberAsString = DummyData
-                .bills
-                .Select(b => b.Number)
-                .Where(n => n.StartsWith(billNumberPrefix))
-                .OrderByDescending(n => n)
-                .FirstOrDefault();
-
-            int nextNumber = (lastNumberAsString == null) ? 1 : Convert.ToInt32(lastNumberAsString.Split('-')[3]) + 1;
-            bill.Number = string.Format("{0}-{1:0000}", billNumberPrefix, nextNumber);
-
-            // Spremimo racun u listu racuna.
-            DummyData.bills.Add(bill);
-
-            // Spremimo svaku sastavnicu racuna u listu sastavnica.
-            foreach (BillContent content in bill.Contents)
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, uri)
             {
-                int? maxBillContentId = DummyData.billContents.Max(bc => bc.Id);
-                content.Id = (maxBillContentId == null) ? 1 : (maxBillContentId.Value + 1);
-                content.BillId = bill.Id;
-                DummyData.billContents.Add(content);
-            }
+                Content = new StringContent(JsonConvert.SerializeObject(bill), Encoding.UTF8, "application/json")
+            };
 
-            // Spremimo svaki status listu statusa.
-            foreach (BillStatus status in bill.Statuses)
-            {
-                int? maxBillStatusId = DummyData.billStatuses.Max(bs => bs.Id);
-                status.Id = (maxBillStatusId == null) ? 1 : (maxBillStatusId.Value + 1);
-                status.BillId = bill.Id;
-                status.StatusTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                DummyData.billStatuses.Add(status);
-            }
-
-            return true;
-        }
-
-        // GET /bills
-        public static async Task<List<Bill>> GetBills()
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-            return new List<Bill>(DummyData.bills);
-        }
-
-        // DELETE /bills/{id}
-        public static async Task<bool> DeleteBill(int id)
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-
-            // Prvo obrisemo sve contente koji se odnose na racun s tim ID-em.
-            DummyData.billContents.RemoveAll(bc => bc.BillId == id);
-
-            // Zatim obrisemo sve statuse koji se odnose na racun s tim ID-em.
-            DummyData.billStatuses.RemoveAll(bs => bs.BillId == id);
-
-            // Na kraju obrisemo i sam racun.
-            DummyData.bills.RemoveAll(b => b.Id == id);
-
-            return true;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+            return message.StatusCode == HttpStatusCode.OK;
         }
 
         // PUT /bills
         public static async Task<bool> UpdateBill(Bill bill)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/bills", MAIN_URI);
 
-            Bill billFromDB = DummyData
-                .bills
-                .SingleOrDefault(b => b.Id == bill.Id);
-
-            if (billFromDB == null)
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, uri)
             {
-                return false;
+                Content = new StringContent(JsonConvert.SerializeObject(bill), Encoding.UTF8, "application/json")
+            };
+
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+            return message.StatusCode == HttpStatusCode.OK;
+        }
+
+        // DELETE /bills/{id}
+        public static async Task<bool> DeleteBill(int id)
+        {
+            string uri = string.Format("{0}/bills/{1}", MAIN_URI, id);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.DeleteAsync(uri);
+            return message.StatusCode == HttpStatusCode.OK;
+        }
+
+        // GET /bills
+        public static async Task<List<Bill>> GetBills()
+        {
+            string uri = string.Format("{0}/bills", MAIN_URI);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync(uri);
+
+            if (message.StatusCode != HttpStatusCode.OK)
+            {
+                return new List<Bill>();
             }
 
-            // Trazimo status koji nema ID i ubacimo ga u bazu.
-            BillStatus status = bill.Statuses.FirstOrDefault(s => !s.Id.HasValue);
-
-            if (status == null)
-            {
-                return false;
-            }
-
-
-            int? maxBillStatusId = DummyData.billStatuses.Max(bs => bs.Id);
-            status.Id = (maxBillStatusId == null) ? 1 : (maxBillStatusId.Value + 1);
-            status.BillId = bill.Id;
-            status.StatusTimestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            billFromDB.Statuses.Add(status);
-            DummyData.billStatuses.Add(status);
-
-            return true;
-        }
-
-        // GET /bill-reports
-        public static async Task<List<BillReport>> GetBillReports()
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-            return new List<BillReport>(DummyData.billReports);
-        }
-
-        // GET /supply-reports
-        public static async Task<List<SupplyReport>> GetSupplyReports()
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-            return new List<SupplyReport>(DummyData.supplyReports);
-        }
-
-        // GET /file-data/{id}
-        public static async Task<FileData> GetFileData(int id)
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-            return DummyData.fileDataList.SingleOrDefault(fd => fd.Id == id);
+            string content = await message.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Bill>>(content);
         }
 
         // POST /categories
         public static async Task<bool> AddCategory(Category category)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/categories", MAIN_URI);
 
-            bool categoryNameAlreadyPresent = DummyData
-                .categories
-                .Count(c => c.Name.Equals(category.Name)) > 0;
-
-            if (categoryNameAlreadyPresent)
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, uri)
             {
-                return false;
-            }
+                Content = new StringContent(JsonConvert.SerializeObject(category), Encoding.UTF8, "application/json")
+            };
 
-            int? maxId = DummyData.categories.Max(b => b.Id);
-            category.Id = (maxId == null) ? 1 : (maxId.Value + 1);
-            DummyData.categories.Add(category);
-
-            return true;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+            return message.StatusCode == HttpStatusCode.OK;
         }
 
         // PUT /categories
         public static async Task<bool> UpdateCategory(Category category)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/categories", MAIN_URI);
 
-            Category categoryFromDB = DummyData
-                .categories
-                .SingleOrDefault(c => c.Id == category.Id);
-
-            if (categoryFromDB == null)
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, uri)
             {
-                return false;
-            }
+                Content = new StringContent(JsonConvert.SerializeObject(category), Encoding.UTF8, "application/json")
+            };
 
-            bool categoryNameAlreadyPresent = DummyData
-                .categories
-                .Count(c => c.Id != category.Id && c.Name.Equals(category.Name)) > 0;
-
-            if (categoryNameAlreadyPresent)
-            {
-                return false;
-            }
-
-            categoryFromDB.Name = category.Name;
-
-            return true;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+            return message.StatusCode == HttpStatusCode.OK;
         }
 
         // DELETE /categories/{id}
         public static async Task<bool> DeleteCategory(int id)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
-
-            bool hasChildren = DummyData
-                .products
-                .Count(p => p.CategoryId == id) > 0;
-
-            if (hasChildren)
-            {
-                return false;
-            }
-
-            DummyData.categories.RemoveAll(c => c.Id == id);
-            return true;
+            string uri = string.Format("{0}/categories/{1}", MAIN_URI, id);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.DeleteAsync(uri);
+            return message.StatusCode == HttpStatusCode.OK;
         }
 
         // POST /products
         public static async Task<bool> AddProduct(Product product)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/products", MAIN_URI);
 
-            bool productNameAlreadyPresent = DummyData
-                .products
-                .Count(p => p.Name.Equals(product.Name)) > 0;
-
-            if (productNameAlreadyPresent)
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, uri)
             {
-                return false;
-            }
+                Content = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json")
+            };
 
-            int? maxId = DummyData.products.Max(b => b.Id);
-            product.Id = (maxId == null) ? 1 : (maxId.Value + 1);
-            DummyData.products.Add(product);
-
-            return true;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+            return message.StatusCode == HttpStatusCode.OK;
         }
 
         // PUT /products
         public static async Task<bool> UpdateProduct(Product product)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/products", MAIN_URI);
 
-            Product productFromDB = DummyData
-                .products
-                .SingleOrDefault(p => p.Id == product.Id);
-
-            if (productFromDB == null)
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, uri)
             {
-                return false;
-            }
+                Content = new StringContent(JsonConvert.SerializeObject(product), Encoding.UTF8, "application/json")
+            };
 
-            productFromDB.AvailableQuantity = product.AvailableQuantity;
-            productFromDB.Price = product.Price;
-            productFromDB.CategoryId = product.CategoryId;
-
-            return true;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.SendAsync(request);
+            return message.StatusCode == HttpStatusCode.OK;
         }
 
         // DELETE /products/{id}
         public static async Task<bool> DeleteProduct(int id)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(1));
+            string uri = string.Format("{0}/products/{1}", MAIN_URI, id);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.DeleteAsync(uri);
+            return message.StatusCode == HttpStatusCode.OK;
+        }
 
-            bool presentInSomeBill = DummyData
-                .billContents
-                .Count(bc => bc.CorrespondingProduct.Id == id) > 0;
+        // GET /billreports
+        public static async Task<List<BillReport>> GetBillReports()
+        {
+            string uri = string.Format("{0}/billreports", MAIN_URI);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync(uri);
 
-            if (presentInSomeBill)
+            if (message.StatusCode != HttpStatusCode.OK)
             {
-                return false;
+                return new List<BillReport>();
             }
 
-            DummyData.products.RemoveAll(p => p.Id == id);
-            return true;
+            string content = await message.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<BillReport>>(content);
+        }
+
+        // GET /supply-reports
+        public static async Task<List<SupplyReport>> GetSupplyReports()
+        {
+            string uri = string.Format("{0}/supplyreports", MAIN_URI);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync(uri);
+
+            if (message.StatusCode != HttpStatusCode.OK)
+            {
+                return new List<SupplyReport>();
+            }
+
+            string content = await message.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<SupplyReport>>(content);
+        }
+
+        // GET /filedata/{id}
+        public static async Task<FileData> GetFileData(int id)
+        {
+            string uri = string.Format("{0}/filedata/{1}", MAIN_URI, id);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync(uri);
+
+            if (message.StatusCode != HttpStatusCode.OK)
+            {
+                return null;
+            }
+
+            string content = await message.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<FileData>(content);
         }
     }
 }

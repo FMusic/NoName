@@ -25,5 +25,16 @@ namespace NoNameWebApp.Business
             { "REJECTED", new List<string>() },
             { "PAYED", new List<string>() }
         };
+
+
+        public static readonly List<string> pagesHiddenFromNonAdminUser = new List<string>
+        {
+            "AddCategory.aspx",
+            "AddProduct.aspx",
+            "EditCategory.aspx",
+            "EditProduct.aspx",
+            "Reports.aspx",
+            "Supply.aspx"
+        };
     }
 }

@@ -8,7 +8,10 @@ namespace NoNameWebApp.Presentation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ShowCategories();
+            if (!IsPostBack)
+            {
+                ShowCategories();
+            }
         }
 
         private void ShowCategories()

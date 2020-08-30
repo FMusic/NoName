@@ -27,15 +27,19 @@ namespace NoNameWebApp.Presentation
 
             if (!IsPostBack)
             {
+                // Samo u GET requestu pokupi podatke preko servisa.
                 CommonBusinessStuff.mainData = await RestClient.GetMainData();
 
+                // Na pocetku zelimo imati praznu listu stavki racuna.
                 billContents = new List<BillContent>();
 
+                // Odmah spremi dohvacene podatke u view state.
                 ViewState[KEY_MAIN_DATA] = CommonBusinessStuff.mainData;
                 ViewState[KEY_BILL_CONTENTS] = billContents;
             }
             else
             {
+                // Podatke izvadi iz view statea.
                 CommonBusinessStuff.mainData = (MainData)ViewState[KEY_MAIN_DATA];
                 billContents = (List<BillContent>)ViewState[KEY_BILL_CONTENTS];
             }
@@ -47,6 +51,15 @@ namespace NoNameWebApp.Presentation
 
         private void ShowCategories()
         {
+            // Izvadi prethodno selektirani indeks. To je vazno jer zelimo
+            // namjestiti da je to indeks dropdown liste (DDL) nakon refreshanja
+            // podataka. Naime, nakon popunjavanja data sourcea u DDL, ona se
+            // zapravo skroz isprazni i nanovo popuni pa se time gubi vrijednost
+            // selektiranog indeksa, a mi ga onda nakon toga trebamo rucno
+            // postaviti. Po defaultu (ako ne kazemo drugacije), nakon
+            // popunjavanja data sourcea, selektirani indeks bit ce 0, a prije
+            // tog popunjavanja (tj. dok je DDL prazna), taj indeks je -1.
+
             int selectedIndex = DropDownListCategories.SelectedIndex;
             DropDownListCategories.DataSource = CommonBusinessStuff.mainData.Categories;
             DropDownListCategories.DataValueField = "Id";
@@ -160,7 +173,6 @@ namespace NoNameWebApp.Presentation
 
             Bill bill = new Bill
             {
-                TotalPrice = GetTotalBillPrice(),
                 Contents = new List<BillContent>(),
                 Statuses = new List<BillStatus>()
             };

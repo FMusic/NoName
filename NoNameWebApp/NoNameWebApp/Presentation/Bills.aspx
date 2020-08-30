@@ -40,8 +40,7 @@
                         ID="LinkButtonDeleteBill"
                         runat="server"
                         Text="Obriši"
-                        CommandName="DeleteBill"
-                        Visible='<%# "REJECTED".Equals((string)Eval("LastStatus.Name")) %>' />
+                        CommandName="DeleteBill" />
                     </div>
                 </ItemTemplate>
             </asp:TemplateField>

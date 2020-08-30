@@ -1,0 +1,10 @@
+USE NoNameCoffeeBar;
+GO
+
+CREATE PROCEDURE SP_InsertBillStatus
+@Name VARCHAR(10),
+@BillId INT
+AS
+BEGIN
+	INSERT INTO BillStatus VALUES (@Name, CURRENT_TIMESTAMP, @BillId);
+END

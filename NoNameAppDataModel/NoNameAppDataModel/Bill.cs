@@ -13,14 +13,24 @@ namespace NoNameAppDataModel
         [JsonProperty("number")]
         public string Number { get; set; }
 
-        [JsonProperty("totalPrice")]
-        public float TotalPrice { get; set; }
-
         [JsonProperty("contents")]
         public List<BillContent> Contents { get; set; }
 
         [JsonProperty("statuses")]
         public List<BillStatus> Statuses { get; set; }
+
+        public float TotalPrice
+        {
+            get
+            {
+                if (Contents == null || Contents.Count == 0)
+                {
+                    return 0.0f;
+                }
+
+                return Contents.Sum(c => c.ProductPrice * c.ProductQuantity);
+            }
+        }
 
         public BillStatus LastStatus
         {
