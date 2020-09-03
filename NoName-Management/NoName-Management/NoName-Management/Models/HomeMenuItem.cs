@@ -7,7 +7,9 @@ namespace NoName_Management.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        Blab,
+        gigiu
     }
     public class HomeMenuItem
     {

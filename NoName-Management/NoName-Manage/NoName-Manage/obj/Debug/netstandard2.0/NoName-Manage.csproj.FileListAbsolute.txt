@@ -1,0 +1,13 @@
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\bin\Debug\netstandard2.0\NoName-Manage.deps.json
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\bin\Debug\netstandard2.0\NoName-Manage.dll
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\bin\Debug\netstandard2.0\ref\NoName-Manage.dll
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\bin\Debug\netstandard2.0\NoName-Manage.pdb
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\NoName-Manage.csproj.CoreCompileInputs.cache
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\NoName-Manage.AssemblyInfoInputs.cache
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\NoName-Manage.AssemblyInfo.cs
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\NoName-Manage.dll
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\ref\NoName-Manage.dll
+C:\Users\frane\source\oicar\NoName-Management\NoName-Manage\NoName-Manage\obj\Debug\netstandard2.0\NoName-Manage.pdb
