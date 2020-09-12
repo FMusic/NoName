@@ -1,0 +1,41 @@
+﻿.button {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.grid-container {
+    background-color: #fae3b4;
+    border-radius: 5%;
+    -moz-box-shadow: -5px 5px 10px 0 rgba(0,0,0,1);
+    -webkit-box-shadow: -5px 5px 10px 0 rgba(0,0,0,1);
+    box-shadow: -5px 5px 10px 0 rgba(0,0,0,1);
+    display: grid;
+    grid-template-columns: auto;
+    left: 50%;
+    padding: 30px 50px 50px 50px;
+    position: absolute;
+    top: 40%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.textbox {
+    border-radius: 5%;
+    box-shadow: 2px 3px #888888;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 30px 0 30px 0;
+}

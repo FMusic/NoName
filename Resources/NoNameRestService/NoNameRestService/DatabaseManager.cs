@@ -204,6 +204,91 @@ namespace NoNameRestService
             return bills;
         }
 
+        public static Bill GetBill(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("SP_SelectBillById", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                command.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (!reader.Read())
+                {
+                    return null;
+                }
+
+                Bill bill = new Bill
+                {
+                    Id = Convert.ToInt32(reader["Id"]),
+                    Number = (string)reader["Number"],
+                    Statuses = new List<BillStatus>(),
+                    Contents = new List<BillContent>()
+                };
+
+                reader.Close();
+
+                command = new SqlCommand("SP_SelectBillStatuses", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                command.Parameters.Add("@BillId", SqlDbType.Int).Value = id;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    BillStatus status = new BillStatus
+                    {
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Name = (string)reader["Name"],
+                        StatusTimestamp = ((DateTime)reader["StatusTimestamp"]).ToString(),
+                        BillId = Convert.ToInt32(reader["BillId"])
+                    };
+
+                    bill.Statuses.Add(status);
+                }
+
+                reader.Close();
+
+                command = new SqlCommand("SP_SelectBillContents", connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                command.Parameters.Add("@BillId", SqlDbType.Int).Value = id;
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    BillContent content = new BillContent
+                    {
+                        Id = Convert.ToInt32(reader["ContentId"]),
+                        ProductPrice = (float)(double)reader["ProductPrice"],
+                        ProductQuantity = Convert.ToInt32(reader["ProductQuantity"]),
+                        BillId = Convert.ToInt32(reader["BillId"]),
+                        CorrespondingProduct = new Product
+                        {
+                            Id = Convert.ToInt32(reader["ProductId"]),
+                            Name = (string)reader["Name"],
+                            AvailableQuantity = Convert.ToInt32(reader["AvailableQuantity"]),
+                            Price = (float)(double)reader["Price"],
+                            CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                        }
+                    };
+
+                    bill.Contents.Add(content);
+                }
+
+                return bill;
+            }
+        }
+
         public static bool CreateBill(Bill bill)
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))

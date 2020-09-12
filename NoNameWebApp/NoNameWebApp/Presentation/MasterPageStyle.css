@@ -1,0 +1,134 @@
+﻿* {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+.actionContainer {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: auto auto;
+}
+
+.actionItem {
+    text-align: center;
+}
+
+#backButtonContainer {
+    flex: 2;
+}
+
+.button {
+    background-color: black;
+    border-radius: 10%;
+    box-shadow: 2px 3px #888888;
+    color: white;
+    padding: 3px;
+    text-decoration: none;
+}
+
+    .button:hover {
+        cursor: pointer;
+    }
+
+.buttonLogout {
+    margin-top: 5px;
+}
+
+.contentWrapper {
+    margin-top: 30px;
+}
+
+.dropdownlist {
+    background-color: black;
+    color: white;
+    min-width: 200px;
+    padding: 5px;
+}
+
+#navigationWrapper {
+    display: flex;
+}
+
+#navigation {
+    display: flex;
+    flex: 8;
+    justify-content: space-around;
+}
+
+.navigationMenuItem {
+    color: white;
+    text-align: center;
+}
+
+.label {
+    color: white;
+}
+
+.minified {
+    font-size: 10px;
+}
+
+.pageTitle {
+    color: #fae3b4;
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.table {
+    border-collapse: collapse;
+    margin: 15px 0 15px 0;
+    width: 100%;
+}
+
+    .table th {
+        background-color: #fae3b4;
+    }
+
+    .table td, .table th {
+        padding: 8px;
+    }
+
+    .table tr:not(:first-child) {
+        background-color: white;
+    }
+
+        .table tr:not(:first-child):hover {
+            background-color: lightgray;
+        }
+
+.twoColumnContainer {
+    display: inline-grid;
+    grid-column-gap: 20px;
+    grid-row-gap: 5px;
+    grid-template-columns: auto auto;
+}
+
+.twoColumnContainerItem {
+    /* Ovo mozda budemo trebali pa neka ostane. */
+}
+
+.userDataContainer {
+    flex: 2;
+    margin-top: -10px;
+    text-align: right;
+}
+
+.userDataContainerItem {
+    /* Ovo mozda budemo trebali pa neka ostane. */
+}
+
+#wrapperForm {
+    background: linear-gradient(to right, #5188a3, #87b0c4);
+    margin: 0 300px 0 300px;
+    min-height: 100%;
+    padding: 20px;
+}

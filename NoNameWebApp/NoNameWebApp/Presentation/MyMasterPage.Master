@@ -7,26 +7,51 @@
 
 <html>
 <head runat="server">
-    <link href="MyStyle.css" rel="stylesheet" />
+    <link href="MasterPageStyle.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div id="wrapper">
-            <div>
-                <asp:Menu ID="NavigationMenu" runat="server" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem Text="Ponuda" NavigateUrl="~/Presentation/MainPage.aspx" />
-                        <asp:MenuItem Text="Izvještaji" NavigateUrl="~/Presentation/Reports.aspx" />
-                        <asp:MenuItem Text="Nabava" NavigateUrl="~/Presentation/Supply.aspx" />
-                        <asp:MenuItem Text="Računi za odobrenje" NavigateUrl="~/Presentation/Bills.aspx" />
-                    </Items>
-                </asp:Menu>
-                <div>
-                    <asp:Button ID="ButtonLogout" runat="server" Text="Odjava" OnClick="ButtonLogout_Click" />
+    <form id="wrapperForm" runat="server">
+        <asp:Panel ID="PanelNavigation" runat="server">
+            <div id="navigationWrapper">
+                <div id="backButtonContainer">
+                    <asp:Button
+                        ID="ButtonBack"
+                        runat="server"
+                        Text="Natrag"
+                        OnClick="ButtonBack_Click"
+                        CssClass="button" />
+                </div>
+                <div id="navigation">
+                    <a href="MainPage.aspx" class="navigationMenuItem">Ponuda</a>
+                    <a href="Bills.aspx" class="navigationMenuItem">Računi za odobrenje</a>
+                    <asp:Panel ID="PanelSupplyLink" runat="server" HorizontalAlign="Center">
+                        <a href="Supply.aspx" class="navigationMenuItem">Nabava</a>
+                    </asp:Panel>
+                    <asp:Panel ID="PanelReportsLink" runat="server" HorizontalAlign="Center">
+                        <a href="Reports.aspx" class="navigationMenuItem">Izvještaji</a>
+                    </asp:Panel>
+                </div>
+                <div class="userDataContainer">
+                    <div>
+                        <asp:Label ID="LabelFullName" CssClass="minified userDataContainerItem" runat="server" />
+                    </div>
+                    <asp:Button
+                        ID="ButtonLogout"
+                        runat="server"
+                        Text="Odjava"
+                        OnClick="ButtonLogout_Click"
+                        CssClass="button buttonLogout userDataContainerItem" />
                 </div>
             </div>
+            <hr />
+
+            <div class="pageTitle">
+                <asp:Label ID="LabelPageTitle" runat="server"  />
+            </div>
+        </asp:Panel>
+        <div class="contentWrapper">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>

@@ -11,6 +11,7 @@ namespace NoNameWebApp.Presentation
     public partial class Bills : System.Web.UI.Page
     {
         private const string KEY_BILLS = "bills";
+        private List<Bill> bills;
 
         protected async void Page_Load(object sender, EventArgs e)
         {
@@ -20,23 +21,30 @@ namespace NoNameWebApp.Presentation
             }
             else
             {
-                CommonBusinessStuff.bills = (List<Bill>)ViewState[KEY_BILLS];
+                bills = (List<Bill>)ViewState[KEY_BILLS];
             }
 
             ShowStatuses();
             ShowBills();
         }
 
+        public string GetStatusName(Bill bill)
+        {
+            return CommonBusinessStuff.statusNames[bill.LastStatus.Name];
+        }
+
         private async Task RefreshBills()
         {
-            CommonBusinessStuff.bills = await RestClient.GetBills();
-            ViewState[KEY_BILLS] = CommonBusinessStuff.bills;
+            bills = await RestClient.GetBills();
+            ViewState[KEY_BILLS] = bills;
         }
 
         private void ShowStatuses()
         {
             int selectedIndex = DropDownListStatuses.SelectedIndex;
             DropDownListStatuses.DataSource = CommonBusinessStuff.statusNames;
+            DropDownListStatuses.DataTextField = "Value";
+            DropDownListStatuses.DataValueField = "Key";
 
             if (selectedIndex == -1)
             {
@@ -56,13 +64,13 @@ namespace NoNameWebApp.Presentation
 
             if (string.IsNullOrWhiteSpace(selectedStatusName))
             {
-                GridViewBills.DataSource = CommonBusinessStuff.bills;
+                GridViewBills.DataSource = bills.OrderByDescending(b => b.Number);
             }
             else
             {
-                GridViewBills.DataSource = CommonBusinessStuff
-                    .bills
-                    .Where(b => b.LastStatus.Name.Equals(selectedStatusName));
+                GridViewBills.DataSource = bills
+                    .Where(b => b.LastStatus.Name.Equals(selectedStatusName))
+                    .OrderByDescending(b => b.Number);
             }
 
             GridViewBills.DataBind();

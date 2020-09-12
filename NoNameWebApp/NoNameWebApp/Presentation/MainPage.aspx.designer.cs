@@ -13,24 +13,6 @@ namespace NoNameWebApp.Presentation {
     public partial class MainPage {
         
         /// <summary>
-        /// LabelFullName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelFullName;
-        
-        /// <summary>
-        /// LabelUserType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelUserType;
-        
-        /// <summary>
         /// DropDownListCategories control.
         /// </summary>
         /// <remarks>
@@ -47,6 +29,15 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewProducts;
+        
+        /// <summary>
+        /// PanelBillContents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelBillContents;
         
         /// <summary>
         /// GridViewBillContents control.

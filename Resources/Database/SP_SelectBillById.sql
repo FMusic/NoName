@@ -1,0 +1,9 @@
+USE NoNameCoffeeBar;
+GO
+
+CREATE PROCEDURE SP_SelectBillById
+@Id INT
+AS
+BEGIN
+	SELECT * FROM Bill WHERE Id = @Id;
+END

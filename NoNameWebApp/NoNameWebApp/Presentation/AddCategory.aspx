@@ -11,8 +11,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Naziv:
-    <asp:TextBox ID="TextBoxName" runat="server" />
-    <br /><br />
-    <asp:Button ID="ButtonAdd" runat="server" Text="Dodaj" OnClick="ButtonAdd_Click" />
+    <div class="twoColumnContainer">
+        <span class="label twoColumnContainerItem">Naziv:</span>
+        <asp:TextBox ID="TextBoxName" runat="server" CssClass="twoColumnContainerItem" />
+        <asp:Button ID="ButtonAdd" runat="server" Text="Dodaj" OnClick="ButtonAdd_Click" CssClass="button twoColumnContainerItem" />
+    </div>
 </asp:Content>

@@ -11,36 +11,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <table>
-        <tr>
-            <td>Naziv:</td>
-            <td>
-                <asp:TextBox ID="TextBoxName" runat="server" />
-            </td>
-        </tr>
-        <tr>
-            <td>Dostupna količina:</td>
-            <td>
-                <asp:TextBox ID="TextBoxAvailableQuantity" runat="server" TextMode="Number" />
-            </td>
-        </tr>
-        <tr>
-            <td>Cijena:</td>
-            <td>
-                <asp:TextBox ID="TextBoxPrice" runat="server" />
-            </td>
-        </tr>
-        <tr>
-            <td>Kategorija:</td>
-            <td>
-                <asp:DropDownList ID="DropDownListCategories" runat="server" />
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <asp:Button ID="ButtonAdd" runat="server" Text="Dodaj" OnClick="ButtonAdd_Click" />
-            </td>
-        </tr>
-    </table>
+    <div class="twoColumnContainer">
+        <span class="label twoColumnContainerItem">Naziv:</span>
+        <asp:TextBox ID="TextBoxName" runat="server" CssClass="twoColumnContainer" />
+        <span class="label twoColumnContainerItem">Dostupna količina:</span>
+        <asp:TextBox ID="TextBoxAvailableQuantity" runat="server" TextMode="Number" CssClass="twoColumnContainer" />
+        <span class="label twoColumnContainerItem">Cijena:</span>
+        <asp:TextBox ID="TextBoxPrice" runat="server" CssClass="twoColumnContainer" />
+        <span class="label twoColumnContainerItem">Kategorija:</span>
+        <asp:DropDownList ID="DropDownListCategories" runat="server" CssClass="dropdownlist twoColumnContainerItem" />
+        <asp:Button ID="ButtonAdd" runat="server" Text="Dodaj" OnClick="ButtonAdd_Click" CssClass="button twoColumnContainerItem" />
+    </div>
 </asp:Content>

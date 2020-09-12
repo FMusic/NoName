@@ -15,16 +15,6 @@ namespace NoNameWebApp.Presentation
 
         protected async void Page_Load(object sender, EventArgs e)
         {
-            UserData userData = ((MyMasterPage)Master).GetUserData();
-
-            if (userData == null)
-            {
-                return;
-            }
-
-            LabelFullName.Text = userData.FullName;
-            LabelUserType.Text = userData.userType.Name;
-
             if (!IsPostBack)
             {
                 CommonBusinessStuff.mainData = await RestClient.GetMainData();
@@ -74,9 +64,16 @@ namespace NoNameWebApp.Presentation
 
         private void ShowBillContents()
         {
+            if (billContents.Count == 0)
+            {
+                PanelBillContents.Visible = false;
+                return;
+            }
+
             GridViewBillContents.DataSource = billContents;
             GridViewBillContents.DataBind();
             LabelTotal.Text = CommonPresentationStuff.FormatPrice(GetTotalBillPrice());
+            PanelBillContents.Visible = true;
         }
 
         private float GetTotalBillPrice()

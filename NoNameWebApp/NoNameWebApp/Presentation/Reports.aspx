@@ -7,58 +7,64 @@
     Async="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="ReportsPageStyle.css" rel="stylesheet" />
     <title>Izvještaji</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Izvještaji o računima:
-    <br />
+    <div class="reportsContainer">
+        <span class="label">Izvještaji o računima:</span>
 
-    <asp:GridView
-        ID="GridViewBillReports"
-        runat="server"
-        AutoGenerateColumns="False"
-        OnRowCommand="GridViewBillReports_RowCommand">
-        <Columns>
-            <asp:BoundField DataField="Year" HeaderText="Godina" />
-            <asp:BoundField DataField="Month" HeaderText="Mjesec" />
-            <asp:BoundField DataField="Day" HeaderText="Dan" />
-            <asp:TemplateField HeaderText="">
-                <ItemTemplate>
-                    <asp:HiddenField ID="HiddenFieldBillFileDataId" Value='<%# Eval("FileDataId") %>' runat="server" />
-                    <asp:LinkButton
-                        ID="LinkButton"
-                        runat="server"
-                        Text="Preuzmi"
-                        CommandName="DownloadBillReport" />
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
-    <br />
+        <asp:GridView
+            ID="GridViewBillReports"
+            runat="server"
+            AutoGenerateColumns="False"
+            OnRowCommand="GridViewBillReports_RowCommand"
+            CssClass="table">
+            <Columns>
+                <asp:BoundField DataField="Year" HeaderText="Godina" />
+                <asp:BoundField DataField="Month" HeaderText="Mjesec" />
+                <asp:BoundField DataField="Day" HeaderText="Dan" />
+                <asp:TemplateField HeaderText="Akcije">
+                    <ItemTemplate>
+                        <asp:HiddenField ID="HiddenFieldBillFileDataId" Value='<%# Eval("FileDataId") %>' runat="server" />
+                        <asp:LinkButton
+                            ID="LinkButton"
+                            runat="server"
+                            Text="Preuzmi"
+                            CommandName="DownloadBillReport"
+                            CssClass="button" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
 
-    Izvještaji o nabavama:
-    <br />
+    <div class="reportsContainer">
+        <span class="label">Izvještaji o nabavama:</span>
 
-    <asp:GridView
-        ID="GridViewSupplyReports"
-        runat="server"
-        AutoGenerateColumns="False"
-        OnRowCommand="GridViewSupplyReports_RowCommand">
-        <Columns>
-            <asp:BoundField DataField="Year" HeaderText="Godina" />
-            <asp:BoundField DataField="Month" HeaderText="Mjesec" />
-            <asp:BoundField DataField="Day" HeaderText="Dan" />
-            <asp:TemplateField HeaderText="">
-                <ItemTemplate>
-                    <asp:HiddenField ID="HiddenFieldSupplyFileDataId" Value='<%# Eval("FileDataId") %>' runat="server" />
-                    <asp:LinkButton
-                        ID="LinkButton"
-                        runat="server"
-                        Text="Preuzmi"
-                        CommandName="DownloadSupplyReport" />
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
+        <asp:GridView
+            ID="GridViewSupplyReports"
+            runat="server"
+            AutoGenerateColumns="False"
+            OnRowCommand="GridViewSupplyReports_RowCommand"
+            CssClass="table">
+            <Columns>
+                <asp:BoundField DataField="Year" HeaderText="Godina" />
+                <asp:BoundField DataField="Month" HeaderText="Mjesec" />
+                <asp:BoundField DataField="Day" HeaderText="Dan" />
+                <asp:TemplateField HeaderText="Akcije">
+                    <ItemTemplate>
+                        <asp:HiddenField ID="HiddenFieldSupplyFileDataId" Value='<%# Eval("FileDataId") %>' runat="server" />
+                        <asp:LinkButton
+                            ID="LinkButton"
+                            runat="server"
+                            Text="Preuzmi"
+                            CommandName="DownloadSupplyReport"
+                            CssClass="button" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
 </asp:Content>

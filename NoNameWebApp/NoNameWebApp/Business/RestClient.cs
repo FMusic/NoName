@@ -105,6 +105,22 @@ namespace NoNameWebApp.Business
             return JsonConvert.DeserializeObject<List<Bill>>(content);
         }
 
+        // GET /bills/{id}
+        public static async Task<Bill> GetBill(int id)
+        {
+            string uri = string.Format("{0}/bills/{1}", MAIN_URI, id);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage message = await client.GetAsync(uri);
+
+            if (message.StatusCode != HttpStatusCode.OK)
+            {
+                return null;
+            }
+
+            string content = await message.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Bill>(content);
+        }
+
         // POST /categories
         public static async Task<bool> AddCategory(Category category)
         {

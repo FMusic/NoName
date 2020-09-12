@@ -7,15 +7,20 @@ namespace NoNameWebApp.Business
     {
         public const string KEY_USER_DATA = "userData";
         public static MainData mainData;
-        public static List<Bill> bills;
 
-        public static readonly List<string> statusNames = new List<string>
+        public static readonly Dictionary<string, string> roleNames = new Dictionary<string, string>
         {
-            "",
-            "CREATED",
-            "APPROVED",
-            "REJECTED",
-            "PAYED"
+            { "Admin", "Admin" },
+            { "Waiter", "Konobar" }
+        };
+
+        public static readonly Dictionary<string, string> statusNames = new Dictionary<string, string>
+        {
+            { "", "Svi" },
+            { "CREATED", "Kreirano" },
+            { "APPROVED", "Odobreno" },
+            { "REJECTED", "Odbijeno" },
+            { "PAYED", "Plaćeno" }
         };
 
         public static readonly Dictionary<string, List<string>> statusTransitions = new Dictionary<string, List<string>>

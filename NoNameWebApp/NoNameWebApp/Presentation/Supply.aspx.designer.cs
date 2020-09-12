@@ -13,6 +13,15 @@ namespace NoNameWebApp.Presentation {
     public partial class Supply {
         
         /// <summary>
+        /// HiddenFieldNumberOfProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldNumberOfProducts;
+        
+        /// <summary>
         /// DropDownListCategories control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonEditCategory;
-        
-        /// <summary>
-        /// HiddenFieldNumberOfProducts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldNumberOfProducts;
         
         /// <summary>
         /// ButtonDeleteCategory control.

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NoNameAppDataModel;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -15,8 +16,27 @@ namespace NoNameRestService
 
             return new HttpResponseMessage
             {
-                StatusCode = System.Net.HttpStatusCode.OK,
+                StatusCode = HttpStatusCode.OK,
                 Content = new StringContent(JsonConvert.SerializeObject(bills))
+            };
+        }
+
+        public HttpResponseMessage Get(int id)
+        {
+            Bill bill = DatabaseManager.GetBill(id);
+
+            if (bill == null)
+            {
+                return new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.InternalServerError
+                };
+            }
+
+            return new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent(JsonConvert.SerializeObject(bill))
             };
         }
 

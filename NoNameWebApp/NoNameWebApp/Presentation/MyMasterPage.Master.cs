@@ -2,7 +2,6 @@
 using NoNameWebApp.Business;
 using System;
 using System.Linq;
-using System.Web.UI.WebControls;
 
 namespace NoNameWebApp.Presentation
 {
@@ -10,14 +9,27 @@ namespace NoNameWebApp.Presentation
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            bool isLoginPage = Request.Url.AbsoluteUri.Contains("Login");
-            NavigationMenu.Visible = !isLoginPage;
-            ButtonLogout.Visible = !isLoginPage;
+            string uri = Request.Url.AbsoluteUri;
+
+            string relativePath = uri.Substring(uri.LastIndexOf('/') + 1);
+
+            bool isLoginPage = relativePath.Contains("Login");
+
+            PanelNavigation.Visible = !isLoginPage;
 
             if (isLoginPage)
             {
+                CommonPresentationStuff.ClearNavigationStack();
                 return;
             }
+
+            if (!IsPostBack)
+            {
+                CommonPresentationStuff.AddPageToNavigationStack(uri);
+            }
+
+            LabelPageTitle.Text = CommonPresentationStuff.GetPageTitle(relativePath);
+            ButtonBack.Visible = CommonPresentationStuff.DoesPreviousPageExist();
 
             UserData userData = GetUserData();
 
@@ -27,34 +39,21 @@ namespace NoNameWebApp.Presentation
                 return;
             }
 
-            bool isAdmin = userData.userType.Name.Equals("Admin");
+            LabelFullName.Text = string.Format(
+                "{0} ({1})",
+                userData.FullName,
+                CommonBusinessStuff.roleNames[userData.userType.Name]);
 
-            // Ogranicenje pristupa.
-            if (!isAdmin)
+            if (!userData.userType.Name.Equals("Admin"))
             {
-                if (CommonBusinessStuff.pagesHiddenFromNonAdminUser.Any(p => Request.Url.AbsoluteUri.Contains(p)))
+                if (CommonBusinessStuff.pagesHiddenFromNonAdminUser.Any(p => relativePath.Contains(p)))
                 {
                     Response.Redirect("MainPage.aspx", false);
                     return;
                 }
 
-                // Remove some links from navigation menu.
-                string[] hiddenPages = new string[] { "Supply.aspx", "Reports.aspx" };
-
-                foreach (string page in hiddenPages)
-                {
-                    string path = string.Format("~/Presentation/{0}", page);
-
-                    for (int i = NavigationMenu.Items.Count - 1; i >= 0; --i)
-                    {
-                        MenuItem item = NavigationMenu.Items[i];
-
-                        if (hiddenPages.Any(p => item.NavigateUrl.Contains(p)))
-                        {
-                            NavigationMenu.Items.RemoveAt(i);
-                        }
-                    }
-                }
+                PanelReportsLink.Visible = false;
+                PanelSupplyLink.Visible = false;
             }
         }
 
@@ -68,6 +67,16 @@ namespace NoNameWebApp.Presentation
         {
             Session.Remove(CommonBusinessStuff.KEY_USER_DATA);
             Response.Redirect("LoginPage.aspx", false);
+        }
+
+        protected void ButtonBack_Click(object sender, EventArgs e)
+        {
+            string previousPage = CommonPresentationStuff.GetPreviousPage();
+
+            if (previousPage != null)
+            {
+                Response.Redirect(previousPage, false);
+            }
         }
     }
 }

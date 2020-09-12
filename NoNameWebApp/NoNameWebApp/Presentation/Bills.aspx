@@ -11,36 +11,44 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    Status: <asp:DropDownList
-        ID="DropDownListStatuses"
-        runat="server"
-        AutoPostBack="true" />
+    <div>
+        <span class="label">Status:</span>
+        <asp:DropDownList ID="DropDownListStatuses" runat="server" AutoPostBack="true" CssClass="dropdownlist" />
+    </div>
 
     <asp:GridView
         ID="GridViewBills"
         runat="server"
         AutoGenerateColumns="False"
-        OnRowCommand="GridViewBills_RowCommand">
+        OnRowCommand="GridViewBills_RowCommand"
+        CssClass="table">
         <Columns>
             <asp:BoundField DataField="Number" HeaderText="Broj računa" />
             <asp:BoundField DataField="TotalPrice" HeaderText="Ukupna cijena" DataFormatString="{0:0.00} kn" />
-            <asp:BoundField DataField="LastStatus.Name" HeaderText="Status" />
+            <asp:TemplateField HeaderText="Status">
+                <ItemTemplate>
+                    <%# GetStatusName((NoNameAppDataModel.Bill)Container.DataItem) %>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Akcije">
                 <ItemTemplate>
                     <asp:HiddenField
                         ID="HiddenFieldBillId"
                         Value='<%# Eval("Id") %>'
                         runat="server" />
-                    <asp:LinkButton
-                        ID="LinkButtonEditBill"
-                        runat="server"
-                        Text="Uredi"
-                        CommandName="EditBill" />
-                    <asp:LinkButton
-                        ID="LinkButtonDeleteBill"
-                        runat="server"
-                        Text="Obriši"
-                        CommandName="DeleteBill" />
+                    <div class="actionContainer">
+                        <asp:LinkButton
+                            ID="LinkButtonEditBill"
+                            runat="server"
+                            Text="Uredi"
+                            CommandName="EditBill"
+                            CssClass="button actionItem" />
+                        <asp:LinkButton
+                            ID="LinkButtonDeleteBill"
+                            runat="server"
+                            Text="Obriši"
+                            CommandName="DeleteBill"
+                            CssClass="button actionItem" />
                     </div>
                 </ItemTemplate>
             </asp:TemplateField>

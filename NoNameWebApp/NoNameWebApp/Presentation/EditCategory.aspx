@@ -14,5 +14,5 @@
     Naziv:
     <asp:TextBox ID="TextBoxName" runat="server" />
     <br /><br />
-    <asp:Button ID="ButtonSave" runat="server" Text="Spremi" OnClick="ButtonSave_Click" />
+    <asp:Button ID="ButtonSave" runat="server" Text="Spremi" OnClick="ButtonSave_Click" CssClass="button" />
 </asp:Content>

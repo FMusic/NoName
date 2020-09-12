@@ -2,6 +2,7 @@
 using NoNameWebApp.Business;
 using System;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace NoNameWebApp.Presentation
 {
@@ -10,12 +11,12 @@ namespace NoNameWebApp.Presentation
         private const string KEY_BILL = "bill";
         private Bill bill;
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 int id = Convert.ToInt32(Request.QueryString["id"]);
-                bill = CommonBusinessStuff.bills.Single(b => b.Id == id);
+                bill = await RestClient.GetBill(id);
                 ViewState[KEY_BILL] = bill;
             }
             else
@@ -26,6 +27,11 @@ namespace NoNameWebApp.Presentation
             ShowBill(false);
         }
 
+        public string GetStatusName(BillStatus status)
+        {
+            return CommonBusinessStuff.statusNames[status.Name];
+        }
+
         private void ShowBill(bool afterUpdate)
         {
             LabelNumber.Text = bill.Number;
@@ -34,7 +40,7 @@ namespace NoNameWebApp.Presentation
             GridViewContents.DataSource = bill.Contents;
             GridViewContents.DataBind();
 
-            GridViewStatuses.DataSource = bill.Statuses;
+            GridViewStatuses.DataSource = bill.Statuses.OrderByDescending(s => s.StatusTimestamp);
             GridViewStatuses.DataBind();
 
             ShowDropdownListOfStatuses(afterUpdate);
@@ -43,12 +49,16 @@ namespace NoNameWebApp.Presentation
         private void ShowDropdownListOfStatuses(bool afterUpdate)
         {
             int selectedIndex = DropDownListStatuses.SelectedIndex;
+            string lastStatus = bill.LastStatus.Name;
+            ListItem lastStatusItem = new ListItem(CommonBusinessStuff.statusNames[lastStatus], lastStatus);
+
             DropDownListStatuses.Items.Clear();
-            DropDownListStatuses.Items.Add(bill.LastStatus.Name);
+            DropDownListStatuses.Items.Add(lastStatusItem);
 
             foreach (string status in CommonBusinessStuff.statusTransitions[bill.LastStatus.Name])
             {
-                DropDownListStatuses.Items.Add(status);
+                ListItem item = new ListItem(CommonBusinessStuff.statusNames[status], status);
+                DropDownListStatuses.Items.Add(item);
             }
 
             if (selectedIndex == -1 || afterUpdate)
@@ -71,18 +81,23 @@ namespace NoNameWebApp.Presentation
             }
 
             bill.Statuses.Add(new BillStatus { Name = selectedStatus });
-            bool success = await RestClient.UpdateBill(bill);
+            bool successfullyUpdated = await RestClient.UpdateBill(bill);
 
-            if (success)
+            if (successfullyUpdated)
             {
-                CommonPresentationStuff.ShowAlert(this, "Promjene su uspješno spremljene!");
-                ViewState[KEY_BILL] = bill;
-                ShowBill(true);
+                bill = await RestClient.GetBill(bill.Id.Value);
+
+                if (bill != null)
+                {
+                    CommonPresentationStuff.ShowAlert(this, "Promjene su uspješno spremljene!");
+                    ViewState[KEY_BILL] = bill;
+                    ShowBill(true);
+
+                    return;
+                }
             }
-            else
-            {
-                CommonPresentationStuff.ShowGenericErrorMessage(this);
-            }
+
+            CommonPresentationStuff.ShowGenericErrorMessage(this);
         }
     }
 }

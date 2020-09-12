@@ -83,8 +83,12 @@
     <Content Include="Presentation\EditCategory.aspx" />
     <Content Include="Presentation\EditProduct.aspx" />
     <Content Include="Presentation\LoginPage.aspx" />
+    <Content Include="Presentation\EditBillPageStyle.css" />
+    <Content Include="Presentation\SupplyPageStyle.css" />
+    <Content Include="Presentation\ReportsPageStyle.css" />
     <Content Include="Presentation\MainPage.aspx" />
-    <Content Include="Presentation\MyStyle.css" />
+    <Content Include="Presentation\LoginPageStyle.css" />
+    <Content Include="Presentation\MasterPageStyle.css" />
     <Content Include="Presentation\Reports.aspx" />
     <Content Include="Presentation\Supply.aspx" />
     <Content Include="Web.config" />
