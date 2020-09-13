@@ -1,8 +1,0 @@
-USE NoNameCoffeeBar;
-GO
-
-CREATE PROCEDURE SP_SelectProducts
-AS
-BEGIN
-	SELECT * FROM Product;
-END

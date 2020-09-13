@@ -1,9 +1,0 @@
-USE NoNameCoffeeBar;
-GO
-
-CREATE PROCEDURE SP_SelectFileDataById
-@Id INT
-AS
-BEGIN
-	SELECT * FROM FileData WHERE Id = @Id;
-END

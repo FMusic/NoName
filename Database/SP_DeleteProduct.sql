@@ -1,9 +1,0 @@
-USE NoNameCoffeeBar;
-GO
-
-CREATE PROCEDURE SP_DeleteProduct
-@Id INT
-AS
-BEGIN
-	DELETE FROM Product WHERE Id = @Id;
-END
