@@ -9,14 +9,14 @@ using System.Web.Http;
 
 namespace WebAPI.Controllers
 {
-    public class CategoriesController : ApiController
+    public class PlacesController : ApiController
     {
         [HttpGet]
-        public async Task<IHttpActionResult> GetCategories()
+        public async Task<IHttpActionResult> GetPlaces()
         {
             try
             {
-                return Ok(await WebApiApplication.GenericDataService.GetAllAsync<Category>());
+                return Ok(await WebApiApplication.GenericDataService.GetAllAsync<Place>());
             }
             catch (Exception ex)
             {
@@ -26,25 +26,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetCategoriesForPlace([FromUri] int placeId)
+        public async Task<IHttpActionResult> GetPlaceForId([FromUri] int id)
         {
             try
             {
-                return Ok(await WebApiApplication.CategoriesDataService.GetCategoriesForPlaceIdAsync(placeId));
-            }
-            catch (Exception ex)
-            {
-                LogHelper.WriteLog(ex);
-                return InternalServerError();
-            }
-        }
-
-        [HttpGet]
-        public async Task<IHttpActionResult> GetCategoryForId([FromUri] int id)
-        {
-            try
-            {
-                return Ok(await WebApiApplication.GenericDataService.GetByIdAsync<Category>(id));
+                return Ok(await WebApiApplication.GenericDataService.GetByIdAsync<Place>(id));
             }
             catch (Exception ex)
             {
@@ -54,12 +40,12 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> AddCategory([FromBody]Category category)
+        public async Task<IHttpActionResult> AddPlace([FromBody] Place place)
         {
             try
             {
-                await WebApiApplication.GenericDataService.AddAsync(category);
-                return Ok(category.Id);
+                await WebApiApplication.GenericDataService.AddAsync(place);
+                return Ok(place.Id);
             }
             catch (Exception ex)
             {
@@ -69,11 +55,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateCategory([FromBody]Category category)
+        public async Task<IHttpActionResult> UpdatePlace([FromBody] Place place)
         {
             try
             {
-                await WebApiApplication.GenericDataService.UpdateAsync(category);
+                await WebApiApplication.GenericDataService.UpdateAsync(place);
                 return Ok();
             }
             catch (Exception ex)
@@ -84,11 +70,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IHttpActionResult> DeleteCategory([FromBody]Category category)
+        public async Task<IHttpActionResult> DeletePlace([FromBody] Place place)
         {
             try
             {
-                await WebApiApplication.GenericDataService.DeleteAsync(category);
+                await WebApiApplication.GenericDataService.DeleteAsync(place);
                 return Ok();
             }
             catch (Exception ex)

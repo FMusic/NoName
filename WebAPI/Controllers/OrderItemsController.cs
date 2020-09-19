@@ -1,5 +1,4 @@
 ﻿using DataLayer.Models.DB;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,25 +9,14 @@ using System.Web.Http;
 
 namespace WebAPI.Controllers
 {
-    public class UsersController : ApiController
+    public class OrderItemsController : ApiController
     {
-        [HttpPost]
-        public async Task<IHttpActionResult> Login([FromBody] JObject data)
+        [HttpGet]
+        public async Task<IHttpActionResult> GetOrderItems()
         {
-            if (!(data.ContainsKey("usr") && data.ContainsKey("pwd")))
-            {
-                return BadRequest();
-            }
-
             try
             {
-                var user = await WebApiApplication.UsersDataService.GetUserForLoginDetailsAsync(data["usr"].ToString(), data["pwd"].ToString());
-                if (user == null)
-                {
-                    return Unauthorized();
-                }
-
-                return Ok(user);
+                return Ok(await WebApiApplication.GenericDataService.GetAllAsync<OrderItem>());
             }
             catch (Exception ex)
             {
@@ -38,16 +26,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> CheckUsernameExists([FromUri] string username)
+        public async Task<IHttpActionResult> GetOrderItemsForOrder([FromUri] int orderId)
         {
-            if (string.IsNullOrWhiteSpace(username))
-            {
-                return BadRequest();
-            }
-
             try
             {
-                return Ok(await WebApiApplication.UsersDataService.CheckUsernameExistsAsync(username));
+                return Ok(await WebApiApplication.OrderItemsDataService.GetOrderItemsForOrderIdAsync(orderId));
             }
             catch (Exception ex)
             {
@@ -57,11 +40,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetUserForId([FromUri] int id)
+        public async Task<IHttpActionResult> GetOrderItemForId([FromUri] int id)
         {
             try
             {
-                return Ok(await WebApiApplication.GenericDataService.GetByIdAsync<User>(id));
+                return Ok(await WebApiApplication.GenericDataService.GetByIdAsync<OrderItem>(id));
             }
             catch (Exception ex)
             {
@@ -71,12 +54,12 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IHttpActionResult> AddUser([FromBody] User user)
+        public async Task<IHttpActionResult> AddOrderItem([FromBody] OrderItem orderItem)
         {
             try
             {
-                await WebApiApplication.GenericDataService.AddAsync(user);
-                return Ok(user.Id);
+                await WebApiApplication.GenericDataService.AddAsync(orderItem);
+                return Ok(orderItem.Id);
             }
             catch (Exception ex)
             {
@@ -86,11 +69,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IHttpActionResult> UpdateUser([FromBody] User user)
+        public async Task<IHttpActionResult> UpdateOrderItem([FromBody] OrderItem orderItem)
         {
             try
             {
-                await WebApiApplication.GenericDataService.UpdateAsync(user);
+                await WebApiApplication.GenericDataService.UpdateAsync(orderItem);
                 return Ok();
             }
             catch (Exception ex)
@@ -101,11 +84,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete]
-        public async Task<IHttpActionResult> DeleteUser([FromBody] User user)
+        public async Task<IHttpActionResult> DeleteOrderItem([FromBody] OrderItem orderItem)
         {
             try
             {
-                await WebApiApplication.GenericDataService.DeleteAsync(user);
+                await WebApiApplication.GenericDataService.DeleteAsync(orderItem);
                 return Ok();
             }
             catch (Exception ex)

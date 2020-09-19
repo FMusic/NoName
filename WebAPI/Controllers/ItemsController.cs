@@ -19,8 +19,23 @@ namespace WebAPI.Controllers
             {
                 return Ok(await WebApiApplication.GenericDataService.GetAllAsync<Item>());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.WriteLog(ex);
+                return InternalServerError();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IHttpActionResult> GetItemForId([FromUri] int id)
+        {
+            try
+            {
+                return Ok(await WebApiApplication.GenericDataService.GetByIdAsync<Item>(id));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex);
                 return InternalServerError();
             }
         }
@@ -31,10 +46,11 @@ namespace WebAPI.Controllers
             try
             {
                 await WebApiApplication.GenericDataService.AddAsync(item);
-                return Ok();
+                return Ok(item.Id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.WriteLog(ex);
                 return InternalServerError();
             }
         }
@@ -47,8 +63,9 @@ namespace WebAPI.Controllers
                 await WebApiApplication.GenericDataService.UpdateAsync(item);
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.WriteLog(ex);
                 return InternalServerError();
             }
         }
@@ -61,8 +78,9 @@ namespace WebAPI.Controllers
                 await WebApiApplication.GenericDataService.DeleteAsync(item);
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.WriteLog(ex);
                 return InternalServerError();
             }
         }

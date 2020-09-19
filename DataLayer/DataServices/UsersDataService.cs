@@ -14,7 +14,15 @@ namespace DataLayer.DataServices
         {
             using (var db = CreateDbContext())
             {
-                return await Task.Run(() => db.Users.Where(x => x.Email == usr && x.HashedPwd == pwd).SingleOrDefault());
+                return await Task.Run(() => db.Users.Where(x => x.Email == usr && x.Password == pwd).SingleOrDefault());
+            }
+        }
+
+        public async Task<bool> CheckUsernameExistsAsync(string username)
+        {
+            using (var db = CreateDbContext())
+            {
+                return await Task.Run(() => db.Users.Any(x => x.Username == username));
             }
         }
     }

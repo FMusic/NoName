@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace DataLayer.Models.DB
 {
-    [Table("Category")]
-    public class Category
+    [Table("Order")]
+    public class Order
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public DateTime DateTime { get; set; }
+        public string TableNumber { get; set; }
+        public double TotalPrice { get; set; }
+        public bool Charged { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual User User { get; set; }
+        public int UserId { get; set; }
 
         [JsonIgnore]
         public virtual Place Place { get; set; }
