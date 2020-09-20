@@ -16,7 +16,15 @@ namespace DataLayer.DataServices
         {
             using (var db = CreateDbContext())
             {
-                return await Task.Run(() => db.Orders.Where(x => x.PlaceId == placeId).OrderBy(x => x.Id).ToList());
+                return await Task.Run(() => db.Orders.Where(x => x.PlaceId == placeId).OrderBy(x => x.DateTime).ToList());
+            }
+        }
+
+        public async Task<List<Order>> GetOrdersForPlaceIdAndDateAsync(int placeId, DateTime date)
+        {
+            using (var db = CreateDbContext())
+            {
+                return await Task.Run(() => db.Orders.Where(x => x.PlaceId == placeId && x.DateTime.Year == date.Year && x.DateTime.Month == date.Month && x.DateTime.Day == date.Day).OrderBy(x => x.DateTime).ToList());
             }
         }
 
@@ -24,7 +32,7 @@ namespace DataLayer.DataServices
         {
             using (var db = CreateDbContext())
             {
-                return await Task.Run(() => db.Orders.Where(x => x.UserId == userId).OrderBy(x => x.Id).ToList());
+                return await Task.Run(() => db.Orders.Where(x => x.UserId == userId).OrderBy(x => x.DateTime).ToList());
             }
         }
     }

@@ -50,6 +50,26 @@ namespace WebAPI.Controllers
         }
 
         /// <summary>
+        /// Gets Orders for Place ID and date.
+        /// </summary>
+        /// <param name="placeId">Place ID</param>
+        /// <param name="date">Date</param>
+        [HttpGet]
+        [ResponseType(typeof(List<Order>))]
+        public async Task<IHttpActionResult> GetOrdersForPlaceAndDate([FromUri] int placeId, DateTime date)
+        {
+            try
+            {
+                return Ok(await WebApiApplication.OrdersDataService.GetOrdersForPlaceIdAndDateAsync(placeId, date.Date));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex);
+                return InternalServerError();
+            }
+        }
+
+        /// <summary>
         /// Gets Orders for User ID.
         /// </summary>
         /// <param name="userId">User ID</param>

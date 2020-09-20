@@ -17,6 +17,7 @@ namespace WebAPI
         public static UsersDataService UsersDataService{ get; set; } = new UsersDataService();
         public static OrdersDataService OrdersDataService { get; set; } = new OrdersDataService();
         public static OrderItemsDataService OrderItemsDataService { get; set; } = new OrderItemsDataService();
+        public static RevenueDataService RevenueDataService { get; set; } = new RevenueDataService();
 
         protected void Application_Start()
         {
