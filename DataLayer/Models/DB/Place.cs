@@ -19,10 +19,10 @@ namespace DataLayer.Models.DB
         public virtual User Owner { get; set; }
         public int? OwnerId { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<Category> Categories { get; set; }
+        //[JsonIgnore]
+        //public virtual ICollection<Category> Categories { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<Order> Orders { get; set; }
+        //[JsonIgnore]
+        //public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -10,11 +10,11 @@ namespace DataLayer.DataServices
 {
     public class UsersDataService : DataService
     {
-        public async Task<User> GetUserForLoginDetailsAsync(string usr, string pwd)
+        public async Task<User> GetUserForLoginInfoAsync(LoginInfo loginInfo)
         {
             using (var db = CreateDbContext())
             {
-                return await Task.Run(() => db.Users.Where(x => x.Email == usr && x.Password == pwd).SingleOrDefault());
+                return await Task.Run(() => db.Users.Where(x => x.Username == loginInfo.Usr && x.Password == loginInfo.Pwd).SingleOrDefault());
             }
         }
 

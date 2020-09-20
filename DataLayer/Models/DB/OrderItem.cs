@@ -12,17 +12,12 @@ namespace DataLayer.Models.DB
     public class OrderItem
     {
         public int Id { get; set; }
-        public DateTime DateTime { get; set; }
-        public string TableNumber { get; set; }
         public double Quantity { get; set; }
-        public double TotalPrice { get; set; }
-        public bool Charged { get; set; }
+        public double Price { get; set; }
 
         [JsonIgnore]
         public virtual Item Item { get; set; }
-        public int ItemId { get; set; }
-        public string ItemName { get; set; }
-        public double ItemPrice { get; set; }
+        public int? ItemId { get; set; }
 
         [JsonIgnore]
         public virtual Order Order { get; set; }

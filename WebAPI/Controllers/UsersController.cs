@@ -1,4 +1,5 @@
-﻿using DataLayer.Models.DB;
+﻿using DataLayer.Models;
+using DataLayer.Models.DB;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -7,22 +8,24 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace WebAPI.Controllers
 {
     public class UsersController : ApiController
     {
+        /// <summary>
+        /// User Login.
+        /// </summary>
+        /// <returns> Returns User or 401 Unauthorized.</returns>
+        [Route("api/Users/Login")]
         [HttpPost]
-        public async Task<IHttpActionResult> Login([FromBody] JObject data)
+        [ResponseType(typeof(User))]
+        public async Task<IHttpActionResult> Login([FromBody] LoginInfo loginInfo)
         {
-            if (!(data.ContainsKey("usr") && data.ContainsKey("pwd")))
-            {
-                return BadRequest();
-            }
-
             try
             {
-                var user = await WebApiApplication.UsersDataService.GetUserForLoginDetailsAsync(data["usr"].ToString(), data["pwd"].ToString());
+                var user = await WebApiApplication.UsersDataService.GetUserForLoginInfoAsync(loginInfo);
                 if (user == null)
                 {
                     return Unauthorized();
@@ -37,7 +40,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Checks if username exists.
+        /// </summary>
+        /// <returns>Returns true if username exists or false.</returns>
+        /// <param>username</param>
         [HttpGet]
+        [ResponseType(typeof(bool))]
         public async Task<IHttpActionResult> CheckUsernameExists([FromUri] string username)
         {
             if (string.IsNullOrWhiteSpace(username))
@@ -56,7 +65,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets User for ID.
+        /// </summary>
+        /// <param name="id">User ID</param>
+        /// <returns>Returns null if not found.</returns>
         [HttpGet]
+        [ResponseType(typeof(User))]
         public async Task<IHttpActionResult> GetUserForId([FromUri] int id)
         {
             try
@@ -70,7 +85,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Create User.
+        /// </summary>
+        /// <returns>Returns User ID.</returns>
         [HttpPost]
+        [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> AddUser([FromBody] User user)
         {
             try
@@ -85,6 +105,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update User.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdateUser([FromBody] User user)
         {
@@ -100,6 +123,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete User.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteUser([FromBody] User user)
         {

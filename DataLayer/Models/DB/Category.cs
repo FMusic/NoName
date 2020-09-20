@@ -14,8 +14,8 @@ namespace DataLayer.Models.DB
         public int Id { get; set; }
         public string Name { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<Item> Items { get; set; }
+        //[JsonIgnore]
+        //public virtual ICollection<Item> Items { get; set; }
 
         [JsonIgnore]
         public virtual Place Place { get; set; }

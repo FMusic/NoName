@@ -6,12 +6,17 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace WebAPI.Controllers
 {
     public class CategoriesController : ApiController
     {
+        /// <summary>
+        /// Gets all Categories.
+        /// </summary>
         [HttpGet]
+        [ResponseType(typeof(List<Category>))]
         public async Task<IHttpActionResult> GetCategories()
         {
             try
@@ -25,7 +30,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Categories for Place ID.
+        /// </summary>
+        /// <param name="placeId">Place ID</param>
         [HttpGet]
+        [ResponseType(typeof(List<Category>))]
         public async Task<IHttpActionResult> GetCategoriesForPlace([FromUri] int placeId)
         {
             try
@@ -39,7 +49,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Category for ID.
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>Returns null if not found.</returns>
         [HttpGet]
+        [ResponseType(typeof(Category))]
         public async Task<IHttpActionResult> GetCategoryForId([FromUri] int id)
         {
             try
@@ -53,7 +69,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Create Category.
+        /// </summary>
+        /// <returns>Returns Category ID.</returns>
         [HttpPost]
+        [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> AddCategory([FromBody]Category category)
         {
             try
@@ -68,6 +89,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update Category.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdateCategory([FromBody]Category category)
         {
@@ -83,6 +107,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete Category.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteCategory([FromBody]Category category)
         {

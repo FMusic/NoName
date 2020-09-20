@@ -23,10 +23,10 @@ namespace DataLayer.DAO
         {
             this.Configuration.LazyLoadingEnabled = false;
 
-            modelBuilder.Entity<OrderItem>()
-                        .HasRequired(m => m.Item)
-                        .WithMany(t => t.OrderItems)
-                        .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<OrderItem>()
+            //            .HasRequired(m => m.Item)
+            //            .WithMany(t => t.OrderItems)
+            //            .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
         }

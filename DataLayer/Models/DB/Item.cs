@@ -20,7 +20,7 @@ namespace DataLayer.Models.DB
         public virtual Category Category { get; set; }
         public int CategoryId { get; set; }
 
-        [JsonIgnore]
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        //[JsonIgnore]
+        //public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

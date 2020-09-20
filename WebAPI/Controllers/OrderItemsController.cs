@@ -6,12 +6,17 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace WebAPI.Controllers
 {
     public class OrderItemsController : ApiController
     {
+        /// <summary>
+        /// Gets all Order Items.
+        /// </summary>
         [HttpGet]
+        [ResponseType(typeof(List<OrderItem>))]
         public async Task<IHttpActionResult> GetOrderItems()
         {
             try
@@ -25,7 +30,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Order Items for Order ID.
+        /// </summary>
+        /// <param name="orderId">Order ID</param>
         [HttpGet]
+        [ResponseType(typeof(List<OrderItem>))]
         public async Task<IHttpActionResult> GetOrderItemsForOrder([FromUri] int orderId)
         {
             try
@@ -39,7 +49,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Order Item for ID.
+        /// </summary>
+        /// <param name="id">Order Item ID</param>
+        /// <returns>Returns null if not found.</returns>
         [HttpGet]
+        [ResponseType(typeof(OrderItem))]
         public async Task<IHttpActionResult> GetOrderItemForId([FromUri] int id)
         {
             try
@@ -53,7 +69,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Create Order Item.
+        /// </summary>
+        /// /// <returns>Returns Order Item ID.</returns>
         [HttpPost]
+        [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> AddOrderItem([FromBody] OrderItem orderItem)
         {
             try
@@ -68,6 +89,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update Order Item..
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdateOrderItem([FromBody] OrderItem orderItem)
         {
@@ -83,6 +107,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete Order Item.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteOrderItem([FromBody] OrderItem orderItem)
         {
