@@ -15,9 +15,9 @@ namespace DataLayer.Models.DB
         public string Name { get; set; }
         public string Address { get; set; }
 
-        [JsonIgnore]
-        public virtual User Owner { get; set; }
-        public int? OwnerId { get; set; }
+        //[JsonIgnore]
+        //public virtual User Owner { get; set; }
+        //public int? OwnerId { get; set; }
 
         //[JsonIgnore]
         //public virtual ICollection<Category> Categories { get; set; }

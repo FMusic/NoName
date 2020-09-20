@@ -25,5 +25,13 @@ namespace DataLayer.DataServices
                 return await Task.Run(() => db.Users.Any(x => x.Username == username));
             }
         }
+
+        public async Task<List<User>> GetUsersForPlaceIdAndUserEnumAsync(int placeId, UserEnum userEnum)
+        {
+            using (var db = CreateDbContext())
+            {
+                return await Task.Run(() => db.Users.Where(x => x.PlaceId == placeId && x.UserEnum == userEnum).OrderBy(x => x.Id).ToList());
+            }
+        }
     }
 }

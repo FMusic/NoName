@@ -6,12 +6,17 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace WebAPI.Controllers
 {
     public class PlacesController : ApiController
     {
+        /// <summary>
+        /// Gets all Places.
+        /// </summary>
         [HttpGet]
+        [ResponseType(typeof(List<Place>))]
         public async Task<IHttpActionResult> GetPlaces()
         {
             try
@@ -25,7 +30,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Place for ID.
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>Returns null if not found.</returns>
         [HttpGet]
+        [ResponseType(typeof(Place))]
         public async Task<IHttpActionResult> GetPlaceForId([FromUri] int id)
         {
             try
@@ -39,7 +50,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Create Place.
+        /// </summary>
+        /// <returns>Returns Place ID.</returns>
         [HttpPost]
+        [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> AddPlace([FromBody] Place place)
         {
             try
@@ -54,6 +70,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update Place.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdatePlace([FromBody] Place place)
         {
@@ -69,6 +88,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete Place.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeletePlace([FromBody] Place place)
         {

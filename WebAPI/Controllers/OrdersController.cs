@@ -6,12 +6,17 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace WebAPI.Controllers
 {
     public class OrdersController : ApiController
     {
+        /// <summary>
+        /// Gets all Orders.
+        /// </summary>
         [HttpGet]
+        [ResponseType(typeof(List<Order>))]
         public async Task<IHttpActionResult> GetOrders()
         {
             try
@@ -25,7 +30,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Orders for Place ID.
+        /// </summary>
+        /// <param name="placeId">Place ID</param>
         [HttpGet]
+        [ResponseType(typeof(List<Order>))]
         public async Task<IHttpActionResult> GetOrdersForPlace([FromUri] int placeId)
         {
             try
@@ -39,7 +49,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Orders for User ID.
+        /// </summary>
+        /// <param name="userId">User ID</param>
         [HttpGet]
+        [ResponseType(typeof(List<Order>))]
         public async Task<IHttpActionResult> GetOrdersForUser([FromUri] int userId)
         {
             try
@@ -53,7 +68,13 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets Order for ID.
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>Returns null if not found.</returns>
         [HttpGet]
+        [ResponseType(typeof(Order))]
         public async Task<IHttpActionResult> GetOrderForId([FromUri] int id)
         {
             try
@@ -67,7 +88,12 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Create Order.
+        /// </summary>
+        /// <returns>Returns Order ID.</returns>
         [HttpPost]
+        [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> AddOrder([FromBody] Order order)
         {
             try
@@ -82,6 +108,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update Order.
+        /// </summary>
         [HttpPut]
         public async Task<IHttpActionResult> UpdateOrder([FromBody] Order order)
         {
@@ -97,6 +126,9 @@ namespace WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete Order.
+        /// </summary>
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteOrder([FromBody] Order order)
         {

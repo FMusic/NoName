@@ -66,6 +66,25 @@ namespace WebAPI.Controllers
         }
 
         /// <summary>
+        /// Gets Users (Employees only) for Place ID.
+        /// </summary>
+        /// <param name="placeId">Place ID</param>
+        [HttpGet]
+        [ResponseType(typeof(List<User>))]
+        public async Task<IHttpActionResult> GetUsersForPlaceAndUserEnum([FromUri] int placeId)
+        {
+            try
+            {
+                return Ok(await WebApiApplication.UsersDataService.GetUsersForPlaceIdAndUserEnumAsync(placeId, UserEnum.Employee));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteLog(ex);
+                return InternalServerError();
+            }
+        }
+
+        /// <summary>
         /// Gets User for ID.
         /// </summary>
         /// <param name="id">User ID</param>

@@ -20,6 +20,10 @@ namespace DataLayer.Models.DB
         public string Password { get; set; }
         public UserEnum UserEnum { get; set; }
 
+        [JsonIgnore]
+        public virtual Place Place { get; set; }
+        public int? PlaceId { get; set; }
+
         //[JsonIgnore]
         //public virtual ICollection<Order> Orders { get; set; }
     }
