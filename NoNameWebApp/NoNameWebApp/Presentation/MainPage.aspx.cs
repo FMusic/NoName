@@ -171,7 +171,14 @@ namespace NoNameWebApp.Presentation
             bill.UserId = MainData.UserData.Id;
             bill.PlaceId = MainData.UserData.PlaceId;
             bill.DateTime = DateTime.Now;
-            bill.TableNumber = bill.DateTime.ToString();
+
+            string tableName = TableNameInput.Text;
+
+            if (String.IsNullOrEmpty(tableName))
+            {
+                tableName = "Table " + ++MainData.TableNumberCounter;
+            }
+            bill.TableNumber = tableName;
 
             bill.TotalPrice = 0;
             foreach (BillContent billContent in bill.Contents)

@@ -82,6 +82,11 @@
             <span class="label strong">
                 <asp:Label ID="LabelTotal" runat="server" /></span>
             <asp:Button ID="ButtonOrder" runat="server" Text="Naruči" OnClick="ButtonOrder_Click" CssClass="button" />
+            <asp:TextBox
+                ID="TableNameInput"
+                runat="server"
+                PlaceHolder="Table Name"
+                class="grid-item textbox" />
         </div>
     </asp:Panel>
 </asp:Content>

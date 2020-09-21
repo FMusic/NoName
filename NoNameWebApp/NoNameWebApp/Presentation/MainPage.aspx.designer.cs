@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoNameWebApp.Presentation {
-    
-    
-    public partial class MainPage {
-        
+namespace NoNameWebApp.Presentation
+{
+
+
+    public partial class MainPage
+    {
+
         /// <summary>
         /// DropDownListCategories control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListCategories;
-        
+
         /// <summary>
         /// GridViewProducts control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewProducts;
-        
+
         /// <summary>
         /// PanelBillContents control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel PanelBillContents;
-        
+
         /// <summary>
         /// GridViewBillContents control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewBillContents;
-        
+
         /// <summary>
         /// LabelTotal control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelTotal;
-        
+
         /// <summary>
         /// ButtonOrder control.
         /// </summary>
@@ -65,5 +67,14 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonOrder;
+
+        /// <summary>
+        /// TableNameInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TableNameInput;
     }
 }

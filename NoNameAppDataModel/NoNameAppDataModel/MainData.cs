@@ -13,5 +13,7 @@ namespace NoNameAppDataModel
         public List<Product> Products { get; set; }
 
         public static UserData UserData { get; set; }
+
+        public static int TableNumberCounter { get; set; }
     }
 }
