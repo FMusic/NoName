@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "b4Muu9z8MHxlov+v9eFd7sAfpeZ8KzrHQcD2lheQhDtAn+/q5A+kKoyUo8gXTozzKZmBI/FtV+bxDSYgzYT6NQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\frane\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\frane\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
+    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
+  ],
+  "logs": []
+}
