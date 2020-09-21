@@ -23,7 +23,7 @@
         OnRowCommand="GridViewBills_RowCommand"
         CssClass="table">
         <Columns>
-            <asp:BoundField DataField="Number" HeaderText="Broj računa" />
+            <asp:BoundField DataField="TableNumber" HeaderText="Broj računa" />
             <asp:BoundField DataField="TotalPrice" HeaderText="Ukupna cijena" DataFormatString="{0:0.00} kn" />
             <asp:TemplateField HeaderText="Status">
                 <ItemTemplate>

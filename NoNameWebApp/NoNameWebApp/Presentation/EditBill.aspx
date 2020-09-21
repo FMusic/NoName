@@ -32,8 +32,8 @@
                 CssClass="table">
                 <Columns>
                     <asp:BoundField DataField="CorrespondingProduct.Name" HeaderText="Naziv" />
-                    <asp:BoundField DataField="ProductQuantity" HeaderText="Količina" />
-                    <asp:BoundField DataField="ProductPrice" HeaderText="Jedinična cijena" DataFormatString="{0:0.00} kn" />
+                    <asp:BoundField DataField="Quantity" HeaderText="Količina" />
+                    <asp:BoundField DataField="Price" HeaderText="Jedinična cijena" DataFormatString="{0:0.00} kn" />
                 </Columns>
             </asp:GridView>
         </div>
@@ -42,23 +42,5 @@
         <span class="label">
             <asp:Label ID="LabelTotal" runat="server" />
         </span>
-    </div>
-
-    <div>
-        <span class="label">Povijest statusa:</span>
-        <asp:GridView
-            ID="GridViewStatuses"
-            runat="server"
-            AutoGenerateColumns="False"
-            CssClass="table">
-            <Columns>
-                <asp:TemplateField HeaderText="Naziv">
-                    <ItemTemplate>
-                        <%# GetStatusName((NoNameAppDataModel.BillStatus)Container.DataItem) %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="StatusTimestamp" HeaderText="Datum i vrijeme" />
-            </Columns>
-        </asp:GridView>
     </div>
 </asp:Content>

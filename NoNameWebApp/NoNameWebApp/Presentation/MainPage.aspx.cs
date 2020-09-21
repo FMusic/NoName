@@ -52,6 +52,11 @@ namespace NoNameWebApp.Presentation
 
         private void ShowProducts()
         {
+            if (DropDownListCategories.SelectedValue == "")
+            {
+                return;
+            }
+
             int selectedCategoryId = Convert.ToInt32(DropDownListCategories.SelectedValue);
             List<Product> visibleProducts = CommonBusinessStuff.mainData
                 .Products
@@ -76,13 +81,13 @@ namespace NoNameWebApp.Presentation
             PanelBillContents.Visible = true;
         }
 
-        private float GetTotalBillPrice()
+        private double GetTotalBillPrice()
         {
-            float result = 0;
+            double result = 0;
 
             foreach (BillContent content in billContents)
             {
-                result += content.ProductPrice * content.ProductQuantity;
+                result += content.Price * content.Quantity;
             }
 
             return result;
@@ -110,8 +115,8 @@ namespace NoNameWebApp.Presentation
             {
                 content = new BillContent()
                 {
-                    ProductPrice = product.Price,
-                    ProductQuantity = 1,
+                    Price = product.Price,
+                    Quantity = 1,
                     CorrespondingProduct = product
                 };
 
@@ -119,7 +124,7 @@ namespace NoNameWebApp.Presentation
             }
             else
             {
-                ++content.ProductQuantity;
+                ++content.Quantity;
             }
 
             ViewState[KEY_BILL_CONTENTS] = billContents;
@@ -133,16 +138,16 @@ namespace NoNameWebApp.Presentation
 
             if (e.CommandName.Equals("DecreaseQuantity"))
             {
-                --content.ProductQuantity;
+                --content.Quantity;
 
-                if (content.ProductQuantity == 0)
+                if (content.Quantity == 0)
                 {
                     billContents.Remove(content);
                 }
             }
             else if (e.CommandName.Equals("IncreaseQuantity"))
             {
-                ++content.ProductQuantity;
+                ++content.Quantity;
             }
 
             ShowBillContents();
@@ -157,12 +162,22 @@ namespace NoNameWebApp.Presentation
 
             Bill bill = new Bill
             {
-                Contents = new List<BillContent>(),
-                Statuses = new List<BillStatus>()
+                Contents = new List<BillContent>()
             };
 
             bill.Contents.AddRange(billContents);
-            bill.Statuses.Add(new BillStatus { Name = "CREATED" });
+            bill.Charged = false;
+
+            bill.UserId = MainData.UserData.Id;
+            bill.PlaceId = MainData.UserData.PlaceId;
+            bill.DateTime = DateTime.Now;
+            bill.TableNumber = bill.DateTime.ToString();
+
+            bill.TotalPrice = 0;
+            foreach (BillContent billContent in bill.Contents)
+            {
+                bill.TotalPrice += billContent.Price * billContent.Quantity;
+            }
 
             bool success = await RestClient.CreateBill(bill);
 

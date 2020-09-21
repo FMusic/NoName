@@ -6,16 +6,16 @@ namespace NoNameAppDataModel
     public class Product
     {
         [JsonProperty("id")]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("availableQuantity")]
-        public int AvailableQuantity { get; set; }
+        [JsonProperty("quantity")]
+        public double Quantity { get; set; }
 
         [JsonProperty("price")]
-        public float Price { get; set; }
+        public double Price { get; set; }
 
         [JsonProperty("categoryId")]
         public int CategoryId { get; set; }

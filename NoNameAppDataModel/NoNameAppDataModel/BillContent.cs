@@ -6,18 +6,20 @@ namespace NoNameAppDataModel
     public class BillContent
     {
         [JsonProperty("id")]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
-        [JsonProperty("productPrice")]
-        public float ProductPrice { get; set; }
+        [JsonProperty("quantity")]
+        public double Quantity { get; set; }
 
-        [JsonProperty("productQuantity")]
-        public int ProductQuantity { get; set; }
+        [JsonProperty("price")]
+        public double Price { get; set; }
 
-        [JsonProperty("correspondingProduct")]
+        [JsonProperty("itemId")]
+        public int ItemId { get; set; }
+
+        [JsonProperty("orderId")]
+        public int OrderId { get; set; }
+
         public Product CorrespondingProduct { get; set; }
-
-        [JsonProperty("billId")]
-        public int? BillId { get; set; }
     }
 }

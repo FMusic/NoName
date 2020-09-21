@@ -71,7 +71,7 @@ namespace NoNameWebApp.Presentation
             ShowAlert(page, "Greška u komunikaciji sa servisom!");
         }
 
-        public static string FormatPrice(float price)
+        public static string FormatPrice(double price)
         {
             return string.Format("{0:0.00} kn", price);
         }

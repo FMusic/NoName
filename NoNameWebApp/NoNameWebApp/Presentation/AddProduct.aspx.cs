@@ -25,10 +25,10 @@ namespace NoNameWebApp.Presentation
         protected async void ButtonAdd_Click(object sender, EventArgs e)
         {
             bool nameEntered = !string.IsNullOrWhiteSpace(TextBoxName.Text);
-            int availableQuantity = Convert.ToInt32(TextBoxAvailableQuantity.Text);
+            int quantity = Convert.ToInt32(TextBoxAvailableQuantity.Text);
             bool priceParsedSuccessfully = float.TryParse(TextBoxPrice.Text, out float price);
 
-            if (!nameEntered || availableQuantity < 0 || !priceParsedSuccessfully)
+            if (!nameEntered || quantity < 0 || !priceParsedSuccessfully)
             {
                 CommonPresentationStuff.ShowAlert(this, "Neispravni podatci!");
                 return;
@@ -37,7 +37,7 @@ namespace NoNameWebApp.Presentation
             Product product = new Product
             {
                 Name = TextBoxName.Text,
-                AvailableQuantity = availableQuantity,
+                Quantity = quantity,
                 Price = price,
                 CategoryId = Convert.ToInt32(DropDownListCategories.SelectedValue)
             };

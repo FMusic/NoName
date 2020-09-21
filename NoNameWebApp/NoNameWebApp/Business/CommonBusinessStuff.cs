@@ -18,16 +18,12 @@ namespace NoNameWebApp.Business
         {
             { "", "Svi" },
             { "CREATED", "Kreirano" },
-            { "APPROVED", "Odobreno" },
-            { "REJECTED", "Odbijeno" },
             { "PAYED", "Plaćeno" }
         };
 
         public static readonly Dictionary<string, List<string>> statusTransitions = new Dictionary<string, List<string>>
         {
-            { "CREATED", new List<string> { "APPROVED", "REJECTED" } },
-            { "APPROVED", new List<string> { "PAYED", "REJECTED" } },
-            { "REJECTED", new List<string>() },
+            { "CREATED", new List<string> { "PAYED" } },
             { "PAYED", new List<string>() }
         };
 

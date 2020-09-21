@@ -40,21 +40,8 @@ namespace NoNameWebApp.Presentation
             }
 
             LabelFullName.Text = string.Format(
-                "{0} ({1})",
-                userData.FullName,
-                CommonBusinessStuff.roleNames[userData.userType.Name]);
-
-            if (!userData.userType.Name.Equals("Admin"))
-            {
-                if (CommonBusinessStuff.pagesHiddenFromNonAdminUser.Any(p => relativePath.Contains(p)))
-                {
-                    Response.Redirect("MainPage.aspx", false);
-                    return;
-                }
-
-                PanelReportsLink.Visible = false;
-                PanelSupplyLink.Visible = false;
-            }
+                "{0} ",
+                userData.FirstName + " " + userData.LastName);
         }
 
         public UserData GetUserData()

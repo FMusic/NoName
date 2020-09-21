@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoNameWebApp.Presentation {
-    
-    
-    public partial class EditBill {
-        
+namespace NoNameWebApp.Presentation
+{
+
+
+    public partial class EditBill
+    {
+
         /// <summary>
         /// LabelNumber control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelNumber;
-        
+
         /// <summary>
         /// DropDownListStatuses control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListStatuses;
-        
+
         /// <summary>
         /// ButtonSave control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonSave;
-        
+
         /// <summary>
         /// GridViewContents control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewContents;
-        
+
         /// <summary>
         /// LabelTotal control.
         /// </summary>
@@ -56,14 +58,5 @@ namespace NoNameWebApp.Presentation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelTotal;
-        
-        /// <summary>
-        /// GridViewStatuses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewStatuses;
     }
 }

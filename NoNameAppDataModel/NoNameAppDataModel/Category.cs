@@ -10,5 +10,8 @@ namespace NoNameAppDataModel
 
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        [JsonProperty("placeId")]
+        public int? PlaceId { get; set; }
     }
 }

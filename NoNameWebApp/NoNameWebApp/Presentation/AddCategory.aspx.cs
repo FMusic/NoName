@@ -18,6 +18,8 @@ namespace NoNameWebApp.Presentation
                 Name = TextBoxName.Text
             };
 
+            category.PlaceId = MainData.UserData.PlaceId;
+
             bool success = await RestClient.AddCategory(category);
 
             if (success)

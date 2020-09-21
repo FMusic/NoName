@@ -17,7 +17,7 @@ namespace NoNameWebApp.Presentation
 
             UserData userData = new UserData
             {
-                UserName = TextBoxUserName.Text,
+                Username = TextBoxUserName.Text,
                 Password = TextBoxPassword.Text
             };
 

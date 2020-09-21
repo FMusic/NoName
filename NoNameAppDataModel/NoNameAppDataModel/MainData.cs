@@ -11,5 +11,7 @@ namespace NoNameAppDataModel
 
         [JsonProperty("products")]
         public List<Product> Products { get; set; }
+
+        public static UserData UserData { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace NoNameWebApp.Presentation
 
         public string GetStatusName(Bill bill)
         {
-            return CommonBusinessStuff.statusNames[bill.LastStatus.Name];
+            return bill.Charged ? "Plaćeno" : "Kreirano";
         }
 
         private async Task RefreshBills()
@@ -64,13 +64,13 @@ namespace NoNameWebApp.Presentation
 
             if (string.IsNullOrWhiteSpace(selectedStatusName))
             {
-                GridViewBills.DataSource = bills.OrderByDescending(b => b.Number);
+                GridViewBills.DataSource = bills.OrderByDescending(b => b.TableNumber);
             }
             else
             {
                 GridViewBills.DataSource = bills
-                    .Where(b => b.LastStatus.Name.Equals(selectedStatusName))
-                    .OrderByDescending(b => b.Number);
+                    .Where(b => b.Charged == selectedStatusName.Equals("PAYED"))
+                    .OrderByDescending(b => b.TableNumber);
             }
 
             GridViewBills.DataBind();

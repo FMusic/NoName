@@ -46,7 +46,7 @@
             CssClass="table">
             <Columns>
                 <asp:BoundField DataField="Name" HeaderText="Naziv" />
-                <asp:BoundField DataField="AvailableQuantity" HeaderText="Stanje zaliha" />
+                <asp:BoundField DataField="Quantity" HeaderText="Stanje zaliha" />
                 <asp:BoundField DataField="Price" HeaderText="Cijena" DataFormatString="{0:0.00} kn" />
                 <asp:TemplateField HeaderText="Akcije">
                     <ItemTemplate>

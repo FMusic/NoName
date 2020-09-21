@@ -50,8 +50,8 @@
             CssClass="table billContents">
             <Columns>
                 <asp:BoundField DataField="CorrespondingProduct.Name" HeaderText="Naziv" />
-                <asp:BoundField DataField="ProductQuantity" HeaderText="Količina" />
-                <asp:BoundField DataField="ProductPrice" HeaderText="Jedinična cijena" DataFormatString="{0:0.00} kn" />
+                <asp:BoundField DataField="Quantity" HeaderText="Količina" />
+                <asp:BoundField DataField="Price" HeaderText="Jedinična cijena" DataFormatString="{0:0.00} kn" />
                 <asp:TemplateField HeaderText="Akcije">
                     <ItemTemplate>
                         <asp:HiddenField

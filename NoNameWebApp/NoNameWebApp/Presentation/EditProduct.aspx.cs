@@ -18,7 +18,7 @@ namespace NoNameWebApp.Presentation
                 product = CommonBusinessStuff.mainData.Products.Single(p => p.Id == id);
                 ViewState[KEY_PRODUCT] = product;
 
-                TextBoxAvailableQuantity.Text = product.AvailableQuantity.ToString();
+                TextBoxAvailableQuantity.Text = product.Quantity.ToString();
                 TextBoxPrice.Text = product.Price.ToString();
             }
             else
@@ -67,7 +67,7 @@ namespace NoNameWebApp.Presentation
                 return;
             }
 
-            product.AvailableQuantity = availableQuantity;
+            product.Quantity = availableQuantity;
             product.Price = price;
             product.CategoryId = Convert.ToInt32(DropDownListCategories.SelectedValue);
             bool success = await RestClient.UpdateProduct(product);

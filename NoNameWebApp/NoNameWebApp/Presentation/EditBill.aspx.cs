@@ -34,14 +34,11 @@ namespace NoNameWebApp.Presentation
 
         private void ShowBill(bool afterUpdate)
         {
-            LabelNumber.Text = bill.Number;
+            LabelNumber.Text = bill.TableNumber;
             LabelTotal.Text = CommonPresentationStuff.FormatPrice(bill.TotalPrice);
 
             GridViewContents.DataSource = bill.Contents;
             GridViewContents.DataBind();
-
-            GridViewStatuses.DataSource = bill.Statuses.OrderByDescending(s => s.StatusTimestamp);
-            GridViewStatuses.DataBind();
 
             ShowDropdownListOfStatuses(afterUpdate);
         }
@@ -49,13 +46,13 @@ namespace NoNameWebApp.Presentation
         private void ShowDropdownListOfStatuses(bool afterUpdate)
         {
             int selectedIndex = DropDownListStatuses.SelectedIndex;
-            string lastStatus = bill.LastStatus.Name;
+            string lastStatus = bill.Charged ? "PAYED" : "CREATED";
             ListItem lastStatusItem = new ListItem(CommonBusinessStuff.statusNames[lastStatus], lastStatus);
 
             DropDownListStatuses.Items.Clear();
             DropDownListStatuses.Items.Add(lastStatusItem);
 
-            foreach (string status in CommonBusinessStuff.statusTransitions[bill.LastStatus.Name])
+            foreach (string status in CommonBusinessStuff.statusTransitions[lastStatus])
             {
                 ListItem item = new ListItem(CommonBusinessStuff.statusNames[status], status);
                 DropDownListStatuses.Items.Add(item);
@@ -63,7 +60,7 @@ namespace NoNameWebApp.Presentation
 
             if (selectedIndex == -1 || afterUpdate)
             {
-                DropDownListStatuses.SelectedValue = bill.LastStatus.Name;
+                DropDownListStatuses.SelectedValue = lastStatus;
             }
             else
             {
@@ -73,14 +70,17 @@ namespace NoNameWebApp.Presentation
 
         protected async void ButtonSave_Click(object sender, EventArgs e)
         {
+
+            string lastStatus = bill.Charged ? "PAYED" : "CREATED";
+
             string selectedStatus = DropDownListStatuses.SelectedValue;
 
-            if (selectedStatus.Equals(bill.LastStatus.Name))
+            if (selectedStatus.Equals(lastStatus))
             {
                 return;
             }
 
-            bill.Statuses.Add(new BillStatus { Name = selectedStatus });
+            bill.Charged = true;
             bool successfullyUpdated = await RestClient.UpdateBill(bill);
 
             if (successfullyUpdated)

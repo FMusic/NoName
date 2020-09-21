@@ -7,27 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NoNameWebApp.Presentation {
-    
-    
-    public partial class Reports {
-        
+namespace NoNameWebApp.Presentation
+{
+
+
+    public partial class Reports
+    {
+
         /// <summary>
-        /// GridViewBillReports control.
+        /// SelectedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewBillReports;
-        
+        protected global::System.Web.UI.WebControls.TextBox SelectedDate;
+
         /// <summary>
-        /// GridViewSupplyReports control.
+        /// ButtonGetRevenue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewSupplyReports;
+        protected global::System.Web.UI.WebControls.Button ButtonGetRevenue;
+
+        /// <summary>
+        /// GridViewRevenue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewRevenue;
     }
 }
