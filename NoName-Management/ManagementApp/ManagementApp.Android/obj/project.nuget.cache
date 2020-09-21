@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "x7QlNN7f3gRXhlZB76NSkpILRVOooQnQbaK4Epgh8a9uDr/lrYT8aIsHzWDODq6aNT+J1Tn7SaZLjHxhmE8xnw==",
+  "dgSpecHash": "1/JsS7KJdIWvMBBEQSjMpz8lBJ3hdwPFoxSkWx62Pr3JG0EC41jfhLjn//84f+93djPXSCys2nz2QO67JueSfQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\frane\\source\\oicar\\NoName-Management\\ManagementApp\\ManagementApp.Android\\ManagementApp.Android.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\frane\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\frane\\.nuget\\packages\\plugin.multilingual\\1.1.6-beta\\plugin.multilingual.1.1.6-beta.nupkg.sha512",
     "C:\\Users\\frane\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",

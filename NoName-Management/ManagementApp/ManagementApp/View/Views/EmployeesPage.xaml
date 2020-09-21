@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ManagementApp.View.Views.EmployeesPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Add new" Clicked="Button_Clicked"/>
+            <StackLayout x:Name="inputEmpl" IsVisible="False">
+                <Entry Placeholder="First Name"  x:Name="fname"/>
+                <Entry Placeholder="Second Name"  x:Name="sname"/>
+                <Entry Placeholder="Email"  x:Name="email"/>
+                <Entry Placeholder="Address"  x:Name="addr"/>
+                <Entry Placeholder="username"  x:Name="un"/>
+                <Entry Placeholder="password" IsPassword="True"  x:Name="pwd"/>
+                <Button Text="Send" Clicked="Button_Clicked_1" />
+            </StackLayout>
+            <ListView ItemsSource="{Binding Employees}"
+                      ItemTapped="ListView_ItemTapped"
+                      ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                            <Label Text="{Binding EmployeeName}" HorizontalOptions="Start" Grid.Column="0"/>
+                            <Label Text="{Binding Email}" HorizontalOptions="End" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

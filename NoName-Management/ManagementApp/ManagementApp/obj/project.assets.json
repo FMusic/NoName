@@ -26,6 +26,29 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Plugin.Multilingual/1.1.6-beta": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/Plugin.Multilingual.Abstractions.dll": {},
+          "lib/netstandard1.0/Plugin.Multilingual.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Plugin.Multilingual.Abstractions.dll": {},
+          "lib/netstandard1.0/Plugin.Multilingual.dll": {}
+        }
+      },
       "System.Numerics.Vectors/4.5.0": {
         "type": "package",
         "compile": {
@@ -209,6 +232,92 @@
         "lib/netstandard1.0/_._",
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Plugin.Multilingual/1.1.6-beta": {
+      "sha512": "wYAkxNEGklTvEr7ee4YNQ+43pVM3FwpOd/PdCR0dmwWj4k/m7vwdRm+SPmUyDNSDXxaXwRDFqL8LWKuHnNsx+A==",
+      "type": "package",
+      "path": "plugin.multilingual/1.1.6-beta",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/netstandard1.0/Helpers/TranslateExtension.txt.pp",
+        "lib/MonoAndroid10/Plugin.Multilingual.Abstractions.dll",
+        "lib/MonoAndroid10/Plugin.Multilingual.Abstractions.pdb",
+        "lib/MonoAndroid10/Plugin.Multilingual.Abstractions.xml",
+        "lib/MonoAndroid10/Plugin.Multilingual.XML",
+        "lib/MonoAndroid10/Plugin.Multilingual.dll",
+        "lib/MonoAndroid10/Plugin.Multilingual.pdb",
+        "lib/UAP10/Plugin.Multilingual.Abstractions.dll",
+        "lib/UAP10/Plugin.Multilingual.Abstractions.pdb",
+        "lib/UAP10/Plugin.Multilingual.Abstractions.xml",
+        "lib/UAP10/Plugin.Multilingual.XML",
+        "lib/UAP10/Plugin.Multilingual.dll",
+        "lib/UAP10/Plugin.Multilingual.pdb",
+        "lib/UAP10/Plugin.Multilingual.pri",
+        "lib/Xamarin.Mac20/Plugin.Multilingual.Abstractions.dll",
+        "lib/Xamarin.Mac20/Plugin.Multilingual.Abstractions.pdb",
+        "lib/Xamarin.Mac20/Plugin.Multilingual.Abstractions.xml",
+        "lib/Xamarin.Mac20/Plugin.Multilingual.dll",
+        "lib/Xamarin.iOS10/Plugin.Multilingual.Abstractions.dll",
+        "lib/Xamarin.iOS10/Plugin.Multilingual.Abstractions.pdb",
+        "lib/Xamarin.iOS10/Plugin.Multilingual.Abstractions.xml",
+        "lib/Xamarin.iOS10/Plugin.Multilingual.XML",
+        "lib/Xamarin.iOS10/Plugin.Multilingual.dll",
+        "lib/XamarinTVOS/Plugin.Multilingual.Abstractions.dll",
+        "lib/XamarinTVOS/Plugin.Multilingual.Abstractions.pdb",
+        "lib/XamarinTVOS/Plugin.Multilingual.Abstractions.xml",
+        "lib/XamarinTVOS/Plugin.Multilingual.dll",
+        "lib/XamarinTVOS/Plugin.Multilingual.pdb",
+        "lib/XamarinWatchOS/Plugin.Multilingual.Abstractions.dll",
+        "lib/XamarinWatchOS/Plugin.Multilingual.Abstractions.pdb",
+        "lib/XamarinWatchOS/Plugin.Multilingual.Abstractions.xml",
+        "lib/XamarinWatchOS/Plugin.Multilingual.dll",
+        "lib/XamarinWatchOS/Plugin.Multilingual.pdb",
+        "lib/net45/Plugin.Multilingual.Abstractions.dll",
+        "lib/net45/Plugin.Multilingual.Abstractions.pdb",
+        "lib/net45/Plugin.Multilingual.Abstractions.xml",
+        "lib/net45/Plugin.Multilingual.dll",
+        "lib/net45/Plugin.Multilingual.pdb",
+        "lib/netstandard1.0/Plugin.Multilingual.Abstractions.dll",
+        "lib/netstandard1.0/Plugin.Multilingual.Abstractions.pdb",
+        "lib/netstandard1.0/Plugin.Multilingual.Abstractions.xml",
+        "lib/netstandard1.0/Plugin.Multilingual.deps.json",
+        "lib/netstandard1.0/Plugin.Multilingual.dll",
+        "lib/netstandard1.0/Plugin.Multilingual.xml",
+        "plugin.multilingual.1.1.6-beta.nupkg.sha512",
+        "plugin.multilingual.nuspec"
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
@@ -564,6 +673,8 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
+      "Newtonsoft.Json >= 12.0.3",
+      "Plugin.Multilingual >= 1.1.6-beta",
       "Xamarin.Essentials >= 1.3.1",
       "Xamarin.Forms >= 4.4.0.991265"
     ]
@@ -615,6 +726,14 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          },
+          "Plugin.Multilingual": {
+            "target": "Package",
+            "version": "[1.1.6-beta, )"
           },
           "Xamarin.Essentials": {
             "target": "Package",

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ArrayOfCacheFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CacheFile>
+    <FileName>MultilingualResources\ManagementApp.hr.xlf</FileName>
+    <Checksum>12422315321418324099252240217607293815512</Checksum>
+    <ModifiedTime>2020-09-18T21:49:14.5125197+02:00</ModifiedTime>
+    <CacheFileType>XliffResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>MultilingualResources\ManagementApp.es.xlf</FileName>
+    <Checksum>1411932181991525079187112184762616118718741</Checksum>
+    <ModifiedTime>2020-09-18T21:35:51.5913603+02:00</ModifiedTime>
+    <CacheFileType>XliffResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Resources\AppResources.resx</FileName>
+    <Checksum>124126122200782297817588185198177623416209</Checksum>
+    <ModifiedTime>2020-09-18T20:22:48.4516205</ModifiedTime>
+    <CacheFileType>NeutralResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Resources\AppResources.hr.resx</FileName>
+    <Checksum>18414013616668224285236242117431627713976</Checksum>
+    <ModifiedTime>2020-09-18T21:50:56.3006754+02:00</ModifiedTime>
+    <CacheFileType>LanguageResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+  <CacheFile>
+    <FileName>Resources\AppResources.es.resx</FileName>
+    <Checksum>23813295122539625416420723141173150121117245</Checksum>
+    <ModifiedTime>2020-09-18T21:50:56.288721+02:00</ModifiedTime>
+    <CacheFileType>LanguageResource</CacheFileType>
+    <WarningMessage />
+  </CacheFile>
+</ArrayOfCacheFile>

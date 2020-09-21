@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ManagementApp.View.Views.DailyPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Today's orders"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label Text="Vrijeme" HorizontalOptions="StartAndExpand"/>
+                <Label Text="Broj stola" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="Cijena"  HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <ListView ItemsSource="{Binding ordersToday}"
+                      x:Name="OrdersList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Column="1"
+                                       Text="{Binding Time}"
+                                       HorizontalOptions="Start"
+                                       />
+                                <Label Grid.Column="2"
+                                       Text="{Binding TableNumber}"
+                                       HorizontalOptions="Center"
+                                       />
+                                <Label Grid.Column="3"
+                                       Text="{Binding TotalPrice}"
+                                       HorizontalOptions="End"
+                                       />
+                                <Label Grid.Column="4"
+                                       Text=" kn"
+                                       HorizontalOptions="Start" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

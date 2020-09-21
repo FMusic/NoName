@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/QSZz0DRAKCLdMYA3b/bEPrQUHXdl+w95+UFmaoVu7CXzn+DIGHdJcJphgYmumii+p07MrOGYOatfi/Ju2HlpQ==",
+  "dgSpecHash": "30WmMofAgB+QjbcIXtS4NrUcvwVXCXHgl4bl0l6vvhEivHwBGjiYWCPFxdR0jc4DgfZfQUCeBfGOgBBXx//E0Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\frane\\source\\oicar\\NoName-Management\\ManagementApp\\ManagementApp.iOS\\ManagementApp.iOS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\frane\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\frane\\.nuget\\packages\\plugin.multilingual\\1.1.6-beta\\plugin.multilingual.1.1.6-beta.nupkg.sha512",
     "C:\\Users\\frane\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.3.1\\xamarin.essentials.1.3.1.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\4.4.0.991265\\xamarin.forms.4.4.0.991265.nupkg.sha512"
