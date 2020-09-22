@@ -45,5 +45,21 @@ namespace ManagementApp.Repo
             }
             return categories;
         }
+
+        internal static IList<Item> getAllItems(int placeId)
+        {
+            List<Item> items = new List<Item>();
+
+            var cats = getAllStorage(placeId);
+            foreach (var cat in cats)
+            {
+                foreach (var item in cat.Items)
+                {
+                    items.Add(item);
+                }
+            }
+
+            return items;
+        }
     }
 }

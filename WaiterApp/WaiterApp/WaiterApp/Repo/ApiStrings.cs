@@ -18,10 +18,11 @@ namespace ManagementApp.Repo
         public const string ORDER_ITEMS_BASE = "OrderItems";
         public const string ORDER_BASE = "Orders";
 
-        public static string CATEGORIES_BY_PLACE(int placeId) => $"Categories?placeId={placeId}";
 
+        public static string CATEGORIES_BY_PLACE(int placeId) => $"Categories?placeId={placeId}";
         public static string EMPLOYEES(int placeId) => $"Users?placeId={placeId}";
         public static string ORDERS_BY_PLACE_DATE(int placeId, string date) => $"Orders?placeId={placeId}&date={date}";
+        internal static string ORDERITEMS_FOR_ORDER(int id) => $"OrderItems?orderId={id}";
         internal static string REVENUE_BY_PLACE_DATE(int placeId, string date) => $"Revenue?placeId={placeId}&month={date}";
     }
 }

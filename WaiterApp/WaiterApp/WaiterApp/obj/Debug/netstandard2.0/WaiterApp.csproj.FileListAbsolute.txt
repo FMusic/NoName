@@ -42,3 +42,4 @@ C:\Users\frane\source\oicar\WaiterApp\WaiterApp\WaiterApp\obj\Debug\netstandard2
 C:\Users\frane\source\oicar\WaiterApp\WaiterApp\WaiterApp\obj\Debug\netstandard2.0\WaiterApp.dll
 C:\Users\frane\source\oicar\WaiterApp\WaiterApp\WaiterApp\obj\Debug\netstandard2.0\ref\WaiterApp.dll
 C:\Users\frane\source\oicar\WaiterApp\WaiterApp\WaiterApp\obj\Debug\netstandard2.0\WaiterApp.pdb
+C:\Users\frane\source\oicar\WaiterApp\WaiterApp\WaiterApp\obj\Debug\netstandard2.0\Views\OrderDetailView.xaml.g.cs

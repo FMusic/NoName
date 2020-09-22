@@ -4,33 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WaiterApp.Views.Payment">
+             x:Class="WaiterApp.Views.OrderDetailView">
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView>
-            <ListView ItemsSource="{Binding OrdersUnpaid}"
-                  ItemTapped="ListView_ItemTapped">
+        <StackLayout Orientation="Vertical">
+            <Button Text="Pay" Clicked="Button_Clicked" />
+            <ListView ItemsSource="{Binding Items}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10" BackgroundColor="Red">
+                            <Grid Padding="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Column="0" 
-                                   Text="{Binding Id}" TextColor="White" FontSize="Medium" />
+                                   Text="{Binding Name}" />
                                 <Label Grid.Column="1" 
-                                   Text="{Binding TableNumber}"  TextColor="White" FontSize="Medium" />
-                                <Label Grid.Column="2" 
-                                   Text="{Binding TotalPrice}"  TextColor="White" FontSize="Medium" />
-                                
+                                   Text="{Binding Quantity}" />
+                                <Label Grid.Column="3" 
+                                   Text="{Binding Price}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            </ScrollView>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
