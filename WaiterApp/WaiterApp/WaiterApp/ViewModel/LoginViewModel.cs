@@ -46,6 +46,7 @@ namespace WaiterApp.ViewModel
             try
             {
                 var u = UserRepo.CheckLogin(new LoginInfo(username, password));
+                App.user = u;
                 App.Current.MainPage = new MainPage();
             }
             catch (Exception ex)

@@ -8,7 +8,7 @@ namespace WaiterApp
     public partial class App : Application
     {
         public static User user { get; set; }
-        bool debug = true;
+        bool debug = false;
         public App()
         {
             if (!debug)
