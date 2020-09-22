@@ -7,7 +7,12 @@
              x:Class="WaiterApp.Views.CatView">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Label Text="Quantity: " x:Name="lblQuantity"/>
+            <StackLayout Orientation="Horizontal">
+
+                <Label Text="Quantity: " x:Name="lblQuantity" HorizontalOptions="StartAndExpand" />
+                <Button Text="+" x:Name="btnPlus" Clicked="btnPlus_Clicked" HorizontalOptions="Center" />
+                <Button Text="-" x:Name="btnMinus" Clicked="btnMinus_Clicked" HorizontalOptions="End" />
+            </StackLayout>
             <Button Text="Save" Clicked="Button_Clicked"/>
             <ListView ItemsSource="{Binding Items}"
                   ItemTapped="ListView_ItemTapped">
@@ -20,7 +25,7 @@
                                 </Grid.RowDefinitions>
                                 <Label Grid.Column="0" 
                                    Text="{Binding Name}" />
-                                <Label Grid.Column="0" 
+                                <Label Grid.Column="1" 
                                    Text="{Binding Price}" />
                             </Grid>
                         </ViewCell>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "b4Muu9z8MHxlov+v9eFd7sAfpeZ8KzrHQcD2lheQhDtAn+/q5A+kKoyUo8gXTozzKZmBI/FtV+bxDSYgzYT6NQ==",
+  "dgSpecHash": "npXK+92WCao+5+Nr7jXJn9CdlPFjmBbQzSubFzR+VwAY9QZiDoBhOtK0SpZyRdLB7w/YLnWrOmLEEIG601CQPA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
+  "projectFilePath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\frane\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\frane\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

@@ -20,7 +20,7 @@ namespace WaiterApp
                 
                 user = new User()
                 {
-                    Id = 18,
+                    Id = 38,
                     FirstName = "Frane",
                     LastName = "Music",
                     PlaceId = 19,

@@ -616,11 +616,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
+      "projectUniqueName": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
       "projectName": "WaiterApp",
-      "projectPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
+      "projectPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
       "packagesPath": "C:\\Users\\frane\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\obj\\",
+      "outputPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

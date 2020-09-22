@@ -34,7 +34,7 @@ namespace ManagementApp.Repo
             var content = JsonConvert.SerializeObject(obj);
             client.BaseAddress = new UriBuilder(ApiStrings.API_BASE).Uri;
             var resp = client.PostAsync(url, new StringContent(content, Encoding.UTF8, "application/json")).Result;
-            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+            if (resp.IsSuccessStatusCode)
             {
                 var str = resp.Content.ReadAsStringAsync().Result;
                 return int.Parse(str);

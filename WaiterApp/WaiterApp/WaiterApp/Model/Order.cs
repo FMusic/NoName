@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Model
 {
@@ -11,6 +12,7 @@ namespace Model
         public bool Charged { get; set; }
         public int UserId { get; set; }
         public int PlaceId { get; set; }
+        [JsonIgnore]
         public string Time
         {
             get

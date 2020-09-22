@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj": {}
+    "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj": {
+    "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj",
+        "projectUniqueName": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj",
         "projectName": "WaiterApp.Android",
-        "projectPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj",
+        "projectPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.Android\\WaiterApp.Android.csproj",
         "packagesPath": "C:\\Users\\frane\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.Android\\obj\\",
+        "outputPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj": {
-                "projectPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj"
+              "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj": {
+                "projectPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj"
               }
             }
           }
@@ -58,14 +58,14 @@
         }
       }
     },
-    "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj": {
+    "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
+        "projectUniqueName": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
         "projectName": "WaiterApp",
-        "projectPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
+        "projectPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
         "packagesPath": "C:\\Users\\frane\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\obj\\",
+        "outputPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

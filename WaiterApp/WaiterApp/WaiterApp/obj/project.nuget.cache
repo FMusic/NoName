@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "azzMRU5sHud+8FhXMLUKuD25wkAbW4V97ar3rLgirVa6q5LZmPpWfX/BrvQehM/SwOBUw+9Y6d4puuMJr21GPg==",
+  "dgSpecHash": "K/xwm9Q+oFfFlNx9FpoiZTlt6rPRsLXSaEKMU0GKmncp2Wi2N9TjcnPWzkS9wfRe94UZWylYekwyEqqLcShw/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
+  "projectFilePath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\frane\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\frane\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",

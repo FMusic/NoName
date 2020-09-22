@@ -14,7 +14,7 @@ namespace WaiterApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CatView : ContentPage
     {
-        public List<Item> Items;
+        public List<Item> Items { get; set; }
         private int quantity;
         private int orderId;
         private Item i;
@@ -30,20 +30,37 @@ namespace WaiterApp.Views
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             i = e.Item as Item;
-            quantity++;
+            quantity = 1;
             lblQuantity.Text = $"{i.Name} {quantity}";
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            OrderItem oi = new OrderItem
+            if (quantity != 0)
             {
-                ItemId = i.Id,
-                OrderId = orderId,
-                Quantity = quantity,
-                Price = i.Price * quantity
-            };
-            OrdersRepo.newOrderItem(oi);
+                OrderItem oi = new OrderItem
+                {
+                    ItemId = i.Id,
+                    OrderId = orderId,
+                    Quantity = quantity,
+                    Price = i.Price * quantity
+                };
+                OrdersRepo.newOrderItem(oi);
+            }
+            Navigation.PopAsync();
+        }
+
+        private void btnPlus_Clicked(object sender, EventArgs e)
+        {
+            quantity++;
+            lblQuantity.Text = $"{i.Name} {quantity}";
+        }
+
+        private void btnMinus_Clicked(object sender, EventArgs e)
+        {
+            if (quantity > 1)
+            quantity--;
+            lblQuantity.Text = $"{i.Name} {quantity}";
         }
     }
 }

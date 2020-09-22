@@ -1096,11 +1096,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
       "projectName": "WaiterApp.iOS",
-      "projectPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
+      "projectPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\WaiterApp.iOS.csproj",
       "packagesPath": "C:\\Users\\frane\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\obj\\",
+      "outputPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -1121,8 +1121,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj": {
-              "projectPath": "C:\\Users\\frane\\source\\oicar_waiter\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj"
+            "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj": {
+              "projectPath": "C:\\Users\\frane\\source\\oicar\\WaiterApp\\WaiterApp\\WaiterApp\\WaiterApp.csproj"
             }
           }
         }
